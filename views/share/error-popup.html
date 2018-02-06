@@ -1,0 +1,13 @@
+<div ng-controller="alertController">
+    <div class="connection-alert" ng-show="alert.visible">
+        <div class="info-error">
+            <div class="title">{{alert.header|i18n}}</div>
+            <div class="text">{{alert.body|i18n}}</div>
+        </div>
+        <div class="close">
+            <a ng-click="closeAlert()">
+                <i class="icon-alert close-error"></i>
+            </a>
+        </div>
+    </div>
+</div>

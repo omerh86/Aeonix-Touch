@@ -1,0 +1,177 @@
+<div id="content" ng-controller="callLogController" class="intouch it-contacts" mobile-height
+     style="overflow-y: hidden !important;">
+    <div class="block-search">
+        <div class="input">
+            <input dir="auto"
+                   type="text"
+                   class="form-control"
+                   ng-keydown="onKeyDown($event)"
+                   ng-model="searchInput"
+                   ng-model-options="{debounce: 1000}"
+                   ng-change="search()"/>
+            <i class="icon-elem icon-search"></i>
+            <i class="icon-elem icon-clear-all-search"></i>
+        </div>
+        <div class="cancel hide"><a>Cancel</a></div>
+    </div>
+    <div class="menu-group">
+        <ul>
+            <li class="item-group" ng-click="showFavorites()">
+                <a>{{ 'messages.favorite' | i18n }}</a>
+            </li>
+            <li class="item-group active" ng-click="onCallLogClicked()">
+                <a>{{ 'messages.recent' | i18n }}
+                    <span class="recent-count" ng-if="missedCallsCounter.counter!=0">{{missedCallsCounter.counter}}</span>
+                </a>
+            </li>
+            <li class="item-group" ng-click="showGroups()">
+                <a>{{'messages.contacts'| i18n }}</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="recent-tabs-bar menu-group" ng-show="searchInput==''">
+        <div class="recent-tab item-group"
+             ng-model="contactsLists.recent.current"
+             ng-class="{active:currentTab == 'allCalls'}"
+             ng-click="showAllCalls()">
+            <a>{{'messages.all'|i18n}}</a>
+        </div>
+        <div class="recent-tab item-group"
+             ng-model="contactsLists.recent.current"
+             ng-class="{active:currentTab == 'missedCalls'}"
+             ng-click="showMissedCalls()">
+            <a>{{'messages.missed'|i18n }}</a>
+        </div>
+    </div>
+
+
+    <div class="contact-list" ng-if="searchInput==''" mobile-height>
+
+        <ul infinite-scroll="loadMoreRecentItems()"
+            infinite-scroll-parent
+            infinite-scroll-immediate-check="false"
+            class="call_log" ng-scrollbar
+            rebuild-on="rebuild:me">
+
+            <li class="call_log_record" ng-repeat="row in callLog"
+                ng-click="toggleFolding($event, row.callLogID);">
+                <ul ng-class="row.user|callLogUserDetailsClass">
+                    <li class="user_image">
+                        <img ng-src="{{row.user.internal.img}}" alt=""/>
+                    </li>
+                    <li class="user_name">{{row.user|contactName:this}}</li>
+                    <li ng-class="row.user|statusIndicatorClass" ng-if="row.user|showStatus"></li>
+                    <li class="number_of_calls" ng-if="row.callLog.length > 1">
+                        ({{row.callLog.length}})
+                    </li>
+                    <li ng-class="row|callLogCallDirectionClass"></li>
+                    <li class="call_date">
+                        {{row.callLog[0].startTime|callLogRecordDate:this}}
+                    </li>
+                    <li class="call_time">
+                        {{row.callLog[0].startTime|callLogRecordTime:this}}
+                    </li>
+                    <li class="user_type" ng-if="row.user|showType">
+                        {{row.user|serviceName:this}}
+                    </li>
+                </ul>
+                <ul class="commands" ng-show="this[this.currentTab][row.callLogID]">
+                    <li class="favorite" ng-if="row.user|showFavorite">
+                        <a ng-class="row.user|callLogFavoriteBtnClass"
+                           ng-click="toggleFavorite($event, row.user, row.user.internal.isFav)"></a>
+                    </li>
+                    <li class="make_call">
+                        <a ng-click="makeCallToContact(row.user, false, $event)"></a>
+                    </li>
+                    <li class="chat" ng-if="row.user|chatEnabled">
+                        <a ng-click="chatWithContact(row.user, $event)"></a>
+                    </li>
+                    <li class="delete_record">
+                        <a ng-click="deleteRecent(row, $event, $index)"></a>
+                    </li>
+                </ul>
+                <table ng-show="row.callLog.length > 1 && this[this.currentTab][row.callLogID]"
+                       class="compressed-info-table" style="width:100%;">
+                    <thead>
+                    <tr>
+                        <td style="padding-left: 15px;font-weight: bold;">{{row.callLog.length + "
+                            Calls"}}
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="call-history-row"
+                        ng-repeat="log in row.callLog track by $index"
+                        style="display: table-row;border-bottom: 1px solid #D4D6D9;height: 30px; width: 100%">
+                        <td ng-class="{'is-outcomingCall':log.callType.toLowerCase() == 'outgoing','is-incomingCall':log.callType.toLowerCase() == 'incoming',missed:!log.answered}"
+                            style="vertical-align: middle;"
+                            ng-bind-html="log.startTime | callLogRecordTime:this"></td>
+                        <td style="vertical-align: middle;"
+                            ng-bind-html="log.callDuration | recentDuration : log.callDuration"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+    </div>
+    <div class="contact-list" ng-if="searchInput!=''"
+         mobile-height>
+
+        <div infinite-scroll="loadMoreSearchItems()"
+             infinite-scroll-parent
+             infinite-scroll-immediate-check="false" class="scrollme" ng-scrollbar
+             rebuild-on="rebuild:me">
+            <div class="item-contact" ng-repeat="contact in searchResult"
+                 on-finish-render="loopController">
+                <div class="contact"
+                     ng-click="showContact(contact)">
+                    <div class="user">
+                        <a class="user-avatar">
+                            <div class="user-avatar-img">
+                                <img src="" ng-src="{{contact.internal.img}}" alt=""/>
+                            </div>
+                            <div class="block-prof-status">
+                                <i class="icon-status" ng-class="contact|statusClassFromUser"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="user-info">
+                        <div class="name-user">{{contact|contactName:this}}</div>
+                        <div class="server-user" >{{contact|contactDescription:this}}</div>
+                    </div>
+                </div>
+                <div class="action-contact">
+                    <a ng-class="{active: contact.internal.isFav};"
+                       ng-if="contact|showFavorite"
+                       ng-click="toggleFavorite($event, contact, contact.internal.isFav)">
+                        <i class="icon-elem icon-favorit"></i>
+                    </a>
+                    <a><i class="icon-btn-contact icon-call"
+                          ng-click="makeCallToContact(contact, false)"></i></a>
+                    <a><i ng-click="chatWithContact(contact)"
+                          class="icon-btn-contact icon-chat"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="deleteRecentModal.html">
+        <div class="modal-header">
+            <h3>Delete {{displayName}} from recent</h3>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to remove {{displayName}} from the recent list?</p>
+
+            <div ng-click="closeModal(true)" class="modal-button">
+                Yes
+            </div>
+            <div ng-click="closeModal(false)" class="modal-button">
+                Back
+            </div>
+        </div>
+    </script>
+
+
+</div>

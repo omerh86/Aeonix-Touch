@@ -1,0 +1,46 @@
+<div class="flex-parent-column intouch it-call" ng-controller="dialPadController" mobile-height>
+    <!--keypad-height-->
+    <div id="number-panel" class="flex-even center-vertically">
+        <div class="number-type">
+
+            <canvas id="canvas" height="30"></canvas>
+
+            <div class="delete-number center" ng-tap="removeLetter()" ng-long-tap="eraseKeys()">
+                <a ng-class="{'active':(keys.length > 0)}"><i
+                        class="icon-elem icon-delete-disabled"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="contact-number-type open" ng-if="keys && searchResult.length>0">
+        <div class="contact-item">
+            <div class="user">
+                <a class="user-avatar">
+                    <div class="user-avatar-img">
+                        <img src="" ng-src="{{searchResult[0].internal.img}}" alt=""/>
+                    </div>
+                    <div class="block-prof-status">
+                        <i class="icon-status" ng-class="searchResult[0]|statusClassFromUser"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="user-info">
+                <div class="name-user">{{searchResult[0]|contactName:this}}</div>
+            </div>
+            <div ng-click="onMoreClick()" class="more-conatcts" ng-if="searchResult.length > 0">
+                <a>{{searchResult.length}}</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="keypad">
+    <div class="container-digits">
+        <div class="item-digit" ng-repeat="key in dialPadKeys" ng-tap="addLetter(key.digit)">
+            <div class="digit">{{key.digit}}</div>
+            <div class="letters">{{key.letters}}</div>
+        </div>
+    </div>
+    <div class="action-keypad">
+        <a><i class="icon-btn icon-call" ng-click="makeCall()"></i></a>
+    </div>
+</div>
+</div>

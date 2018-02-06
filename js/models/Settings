@@ -1,0 +1,101 @@
+function UserCredentials (userName, userLoginName, userPassword) {
+    this.userName = userName;
+    this.userLoginName = userLoginName;
+    this.userPassword = userPassword;
+}
+
+function EndpointCredentials (endpointId, endpointPassword) {
+    this.endpointId = endpointId;
+    this.endpointPassword = endpointPassword;
+}
+
+function LoginInfo (loginDate, lastLoginState, loginType) {
+    this.loginDate = loginDate;
+    this.lastLoginState = lastLoginState;
+    this.loginType = loginType;
+}
+
+function ConnectionSettings(backendServerAddressList,
+        sbcAddressList,
+        serverPreferredAddresses,
+        userPreferredAddresses,
+        transportProtocolType) {
+    this.backendServerAddressList = backendServerAddressList;
+    this.sbcAddressList = sbcAddressList;
+    this.serverPreferredServerAddress = serverPreferredServerAddress;
+    this.userPreferredServerAddress = userPreferredServerAddress;
+    this.transportProtocolType = transportProtocolTypeParam;
+
+
+
+    function evaluateStartingBackendServerAddress() {
+        var startingServer;
+        if (userPreferredAddresses && userPreferredAddresses.backendServerAddress) {
+            startingServer = userPreferredAddresses.backendServerAddress;
+        }else if (serverPreferredAddresses && serverPreferredAddresses.backendServerAddress) {
+            startingServer = serverPreferredAddresses.backendServerAddress;
+        } else {
+            startingServer = backendServerAddressList[0];
+        }
+        return startingServer;
+    }
+
+    function evaluateStartingSbcAddress() {
+        var startingServer;
+        if (userPreferredAddresses && userPreferredAddresses.sbcAddress) {
+            startingServer = userPreferredAddresses.sbcAddress;
+        }else if (serverPreferredAddresses && serverPreferredAddresses.sbcAddress) {
+            startingServer = serverPreferredAddresses.sbcAddress;
+        } else {
+            startingServer = backendServerAddressList[0];
+        }
+        return startingServer;
+    }
+
+    function createServerAddressList() {
+        var list = [];
+
+        var startingBackendServer = evaluateStartingBackendServerAddress();
+
+        for (var i = 0; i < backendServerAddressList.length; i++) {
+            var address = new ServerAddressInfo(backendServerAddressList[i], null);
+            if (address.serverAddress == startingBackendServer) {
+                list.unshift(address);
+            } else {
+                list.push(address);
+            }
+        }
+
+        if (sbcAddressList && sbcAddressList.length > 0) {
+            var temp = list;
+            list = [];
+
+            var startingSbcAddress = evaluateStartingSbcAddress();
+
+            for (var i = 0; i < temp.length; i++) {
+                list.push(temp[i]);
+                var address = new ServerAddressInfo(temp[i].serverAddress, startingSbcAddress);
+                list.push(address);
+            }
+
+            for (var i = 0; i < sbcAddressList.length; i++) {
+                if (sbcAddressList[i] != null && sbcAddressList[i] != startingSbcAddress) {
+                    for (var i = 0; i < temp.length; i++) {
+                        var address = new ServerAddressInfo(temp[i].serverAddress, sbcAddressList[i]);
+                        list.push(address);
+                    }
+                }
+            }
+        }
+
+        return list;
+    }
+
+    function containsAddress (ServerAddressInfo address) {
+        var contains = false;
+        if (backendServerAddressList.includes(address.backendServerAddress)) {
+            contains = !sbcAddressList || sbcAddressList.includes(address.sbcAddress);
+        }
+        return contains;
+    }
+}

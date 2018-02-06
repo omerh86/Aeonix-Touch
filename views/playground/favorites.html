@@ -1,0 +1,329 @@
+<html>
+<head>
+    <link rel="import" href="favorites-style.html">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Aeonix Touch</title>
+    <meta name="description" content="Aeonix Intouch">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <link rel="stylesheet" href="../css/calling.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/custom-checkbox.css">
+    <link rel="stylesheet" href="../css/custom-radio.css">
+    <link rel="stylesheet" href="../css/dropdown.css">
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/icon.css">
+    <link rel="stylesheet" href="../css/keypad.css">
+    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/number-panel.css">
+    <link rel="stylesheet" href="../css/popup.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/ng-scrollbar.min.css">
+    <link rel="stylesheet" href="../css/call-log.css">
+    <link rel="stylesheet" href="../css/chat-list.css">
+    <link rel="stylesheet" href="../bower_components/angular_material/angular-material.min.css">
+</head>
+<body class="ng-scope">
+<div id="theElement"></div>
+
+<div id="touchHook" class="intouch ng-scope" style="overflow: hidden" role="button" tabindex="0">
+    <!-- uiView: -->
+    <ui-view class="ng-scope"><!-- ngInclude: -->
+        <ng-include src="'views/share/main_header.html'" class="ng-scope">
+            <div class="ng-scope">
+                <!-- ngIf: showHeader -->
+                <div id="header" class="ng-scope">
+                    <div class="title">
+                        <!-- ngIf: isBackShown -->
+                        <h2 class="" style=""><a><i class="intouch-icon min-logo icon-right"></i>Aeonix Touch</a></h2>
+                    </div>
+                    <div class="controls-profile" role="button" tabindex="0">
+                        <a class="profile">
+                            <div class="block-prof-avatar">
+                                <img aria-hidden="true" class="ng-hide">
+                                <img aria-hidden="false" class="" src="../img/user-placeholder.png">
+                            </div>
+                        </a>
+                        <a class="profile">
+                            <div class="block-prof-status">
+                                <i class="prof-status green">
+                                </i>
+                            </div>
+                        </a>
+
+                    </div>
+                </div><!-- end ngIf: showHeader -->
+                <!-- ngIf: showTabs -->
+                <div id="menu" class="head-menu ng-scope">
+                    <ul class="menu">
+                        <li class="item-menu">
+
+                            <a aria-haspopup="true" aria-expanded="false" aria-owns="menu_container_0">
+                                <i class="icon-menu icon-menu-element"></i>
+                            </a>
+
+                        </li>
+                        <li class="item-menu" style="">
+                            <a ui-sref="home.dialPad" href="#home/dialPad">
+                                <i class="icon-menu icon-keypad"></i>
+                            </a>
+                        </li>
+                        <li class="item-menu active" style="">
+                            <a ui-sref="home.favorites" href="#home/favorites">
+                                <i class="icon-menu icon-contacts"></i>
+                                <!-- ngIf: missedCallsCounter.counter!=0 -->
+                            </a>
+                        </li>
+                        <li class="item-menu">
+                            <a>
+                                <i class="icon-menu icon-voice-mail"></i>
+                                <!-- ngIf: newVoiceMailCounter.counter!=0 -->
+                            </a>
+                        </li>
+                        <li class="item-menu" style="">
+                            <a ui-sref="home.chatList" href="#home/chatList">
+                                <i class="icon-menu icon-chat"></i>
+                                <!-- ngIf: unseenMessagesCounter.counter!=0 -->
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- end ngIf: showTabs -->
+                <!-- ngIf: showCallQueueLink -->
+            </div>
+        </ng-include>
+        <div style="overflow: hidden" class="ng-scope">
+            <!-- uiView: -->
+            <ui-view class="ng-scope">
+                <div id="content" class="intouch it-contacts ng-scope" mobile-height=""
+                     style="overflow-y: hidden !important;">
+                    <div class="block-search">
+                        <div class="input">
+                            <input dir="auto" type="text"
+                                   class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                   ng-model-options="{debounce: 1000}" aria-invalid="false">
+                            <i class="icon-elem icon-search"></i>
+                            <i class="icon-elem icon-clear-all-search"></i>
+                        </div>
+                        <div class="cancel hide"><a>Cancel</a></div>
+                    </div>
+                    <div class="menu-group">
+                        <ul>
+                            <li class="item-group active">
+                                <a class="ng-binding">Favorite</a>
+                            </li>
+                            <li class="item-group" role="button" tabindex="0">
+                                <a class="ng-binding">Recent
+                                    <!-- ngIf: missedCallsCounter.counter!=0 -->
+                                </a>
+                            </li>
+                            <li class="item-group" role="button" tabindex="0">
+                                <a class="ng-binding">Groups</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- ngIf: searchInput=='' -->
+                    <div class="contact-list ng-scope" mobile-height="">
+                        <!--<span class="local-spinner" ></span>-->
+                        <div class="scrollme ng-isolate-scope" ng-scrollbar="" rebuild-on="rebuild:me">
+                            <div class="ngsb-wrap" style="height: 100%;">
+                                <div class="ngsb-container" ng-transclude="" style="position:relative;top:0">
+                                    <!-- ngRepeat: contact in favoriteList -->
+                                    <div class="item-contact ng-scope" on-finish-render="loopController">
+                                        <div class="contact" role="button" tabindex="0">
+                                            <div class="user">
+                                                <a class="user-avatar">
+                                                    <div class="user-avatar-img">
+                                                        <img src="../img/user-placeholder.png" alt="">
+                                                    </div>
+                                                    <!-- ngIf: contact|showStatus -->
+                                                </a>
+                                            </div>
+                                            <div class="user-info">
+                                                <div class="name-user ng-binding">undefined</div>
+                                                <div class="server-user ng-binding"></div>
+                                            </div>
+                                        </div>
+                                        <div class="action-contact">
+                                            <a class="active">
+                                                <i class="icon-elem icon-favorit" role="button" tabindex="0">
+                                                </i>
+                                            </a>
+                                            <a><i class="icon-btn-contact icon-call" role="button" tabindex="0"></i></a>
+                                            <a><i class="icon-btn-contact icon-chat"></i></a>
+                                        </div>
+                                    </div><!-- end ngRepeat: contact in favoriteList -->
+                                    <div class="item-contact ng-scope">
+                                        <div class="contact" role="button" tabindex="0">
+                                            <div class="user">
+                                                <a class="user-avatar">
+                                                    <div class="user-avatar-img">
+                                                        <img src="../img/user-placeholder-big.png" alt="">
+                                                    </div>
+                                                    <!-- ngIf: contact|showStatus -->
+                                                    <div class="block-prof-status status ng-scope blue">
+                                                        <i class="icon-status blue"></i>
+                                                    </div><!-- end ngIf: contact|showStatus -->
+                                                </a>
+                                            </div>
+                                            <div class="user-info">
+                                                <div class="name-user ng-binding">AviSegal_flexset</div>
+                                                <div class="server-user ng-binding">Offline</div>
+                                            </div>
+                                        </div>
+                                        <div class="action-contact">
+                                            <a class="active">
+                                                <i class="icon-elem icon-favorit" role="button" tabindex="0">
+                                                </i>
+                                            </a>
+                                            <a><i class="icon-btn-contact icon-call" role="button" tabindex="0"></i></a>
+                                            <a><i class="icon-btn-contact icon-chat"></i></a>
+                                        </div>
+                                    </div><!-- end ngRepeat: contact in favoriteList -->
+                                    <div class="item-contact ng-scope">
+                                        <div class="contact" role="button" tabindex="0">
+                                            <div class="user">
+                                                <a class="user-avatar">
+                                                    <div class="user-avatar-img">
+                                                        <img src="data:image/png;base64,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"
+                                                             alt="">
+                                                    </div>
+                                                    <!-- ngIf: contact|showStatus -->
+                                                    <div class="block-prof-status status ng-scope green">
+                                                        <i class="icon-status green"></i>
+                                                    </div><!-- end ngIf: contact|showStatus -->
+                                                </a>
+                                            </div>
+                                            <div class="user-info">
+                                                <div class="name-user ng-binding">Hagai Glazner</div>
+                                                <div class="server-user ng-binding">Available</div>
+                                            </div>
+                                        </div>
+                                        <div class="action-contact">
+                                            <a class="active">
+                                                <i class="icon-elem icon-favorit" role="button" tabindex="0">
+                                                </i>
+                                            </a>
+                                            <a><i class="icon-btn-contact icon-call" role="button" tabindex="0"></i></a>
+                                            <a><i class="icon-btn-contact icon-chat"></i></a>
+                                        </div>
+                                    </div><!-- end ngRepeat: contact in favoriteList -->
+                                    <div class="item-contact ng-scope" on-finish-render="loopController">
+                                        <div class="contact" role="button" tabindex="0">
+                                            <div class="user">
+                                                <a class="user-avatar">
+                                                    <div class="user-avatar-img">
+                                                        <img src="data:image/png;base64,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"
+                                                             alt="">
+                                                    </div>
+                                                    <!-- ngIf: contact|showStatus -->
+                                                    <div class="block-prof-status status ng-scope green">
+                                                        <i class="icon-status green"></i>
+                                                    </div><!-- end ngIf: contact|showStatus -->
+                                                </a>
+                                            </div>
+                                            <div class="user-info">
+                                                <div class="name-user ng-binding">Igor Yerukhimovic</div>
+                                                <div class="server-user ng-binding">Available</div>
+                                            </div>
+                                        </div>
+                                        <div class="action-contact">
+                                            <a class="active">
+                                                <i class="icon-elem icon-favorit" role="button" tabindex="0">
+                                                </i>
+                                            </a>
+                                            <a><i class="icon-btn-contact icon-call" role="button" tabindex="0"></i></a>
+                                            <a><i class="icon-btn-contact icon-chat"></i></a>
+                                        </div>
+                                    </div><!-- end ngRepeat: contact in favoriteList -->
+                                    <div class="item-contact ng-scope" on-finish-render="loopController">
+                                        <div class="contact" role="button" tabindex="0">
+                                            <div class="user">
+                                                <a class="user-avatar">
+                                                    <div class="user-avatar-img">
+                                                        <img src="data:image/png;base64,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"
+                                                             alt="">
+                                                    </div>
+                                                    <!-- ngIf: contact|showStatus -->
+                                                    <div class="block-prof-status status ng-scope blue">
+                                                        <i class="icon-status blue"></i>
+                                                    </div><!-- end ngIf: contact|showStatus -->
+                                                </a>
+                                            </div>
+                                            <div class="user-info">
+                                                <div class="name-user ng-binding">Joseph T23</div>
+                                                <div class="server-user ng-binding">Offline</div>
+                                            </div>
+                                        </div>
+                                        <div class="action-contact">
+                                            <a class="active">
+                                                <i class="icon-elem icon-favorit" role="button" tabindex="0">
+                                                </i>
+                                            </a>
+                                            <a><i class="icon-btn-contact icon-call" role="button" tabindex="0"></i></a>
+                                            <a><i class="icon-btn-contact icon-chat"></i></a>
+                                        </div>
+                                    </div><!-- end ngRepeat: contact in favoriteList -->
+                                    <div class="item-contact ng-scope" on-finish-render="loopController">
+                                        <div class="contact" role="button" tabindex="0">
+                                            <div class="user">
+                                                <a class="user-avatar">
+                                                    <div class="user-avatar-img">
+                                                        <img src="../img/user-placeholder-big.png" alt="">
+                                                    </div>
+                                                    <!-- ngIf: contact|showStatus -->
+                                                    <div class="block-prof-status status ng-scope green">
+                                                        <i class="icon-status green"></i>
+                                                    </div><!-- end ngIf: contact|showStatus -->
+                                                </a>
+                                            </div>
+                                            <div class="user-info">
+                                                <div class="name-user ng-binding">Michael Shleifer</div>
+                                                <div class="server-user ng-binding">Available</div>
+                                            </div>
+                                        </div>
+                                        <div class="action-contact">
+                                            <a class="active">
+                                                <i class="icon-elem icon-favorit" role="button" tabindex="0">
+                                                </i>
+                                            </a>
+                                            <a><i class="icon-btn-contact icon-call" role="button" tabindex="0"></i></a>
+                                            <a><i class="icon-btn-contact icon-chat"></i></a>
+                                        </div>
+                                    </div><!-- end ngRepeat: contact in favoriteList -->
+                                </div>
+                                <div class="ngsb-scrollbar ng-hide" style="position: absolute; display: block;"
+                                     aria-hidden="true">
+                                    <div class="ngsb-thumb-container">
+                                        <div class="ngsb-thumb-pos" oncontextmenu="return false;">
+                                            <div class="ngsb-thumb"></div>
+                                        </div>
+                                        <div class="ngsb-track"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end ngIf: searchInput=='' -->
+
+                    <!-- ngIf: searchInput!='' -->
+
+                </div>
+            </ui-view>
+        </div>
+
+
+    </ui-view>
+</div>
+
+
+
+
+
+
+<input type="text"
+       style="position: absolute; opacity: 0; pointer-events: none; left: 16px; top: 6px; width: 280px; height: 29px; z-index: 0;">
+</body>
+</html>

@@ -1,0 +1,27 @@
+<div class="flex-parent-column intouch it-call" ng-controller="keypadController" mobile-height>
+    <!--keypad-height-->
+    <div id="number-panel" class="flex-even center-vertically">
+        <div class="number-type">
+
+            <canvas id="canvas" height="30"></canvas>
+
+            <div class="delete-number center" ng-tap="removeLetter()" ng-long-tap="eraseKeys()">
+                <a ng-class="{'active':(keys.length > 0)}"><i
+                        class="icon-elem icon-delete-disabled"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="keypad">
+    <div class="container-digits">
+        <div class="item-digit" ng-repeat="key in keypadKeys" ng-tap="addLetter(key.digit)">
+            <div class="digit">{{key.digit}}</div>
+            <div class="letters">{{key.letters}}</div>
+        </div>
+    </div>
+    <div class="action-keypad">
+        <a ng-click="terminateCall(call)"><i class="icon-btn icon-end-call" ></i></a>
+        <a ng-class="{active: isSpeakerOn}" ng-click="toggleSpeaker()"><i class="icon-btn icon-speaker"></i></a>
+        <a ng-class="{active: call.isMuted}" ng-click="toggleMute(call)"><i class="icon-btn icon-mute"></i></a>
+    </div>
+</div>
+</div>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="66" height="66" viewBox="0 0 66 66">
+  <defs>
+    <style>
+
+      .cls-3 {
+        fill: #00688f;
+      }
+
+      .cls-4 {
+        font-size: 20.11256px;
+      }
+
+      .cls-5 {
+        fill: #ffffff;
+        font-size: 20.11256px;
+        font-family: "SegoeUI-Bold";
+        font-weight: bold;
+      }
+    </style>
+  </defs>
+  <g id="p2">
+    <circle id="circle-1" class="cls-3" cx="33" cy="33" r="33"/>
+    <text class="cls-4" transform="translate(8 48) scale(2.09)"><tspan dy="NaNem" class="cls-5">P2</tspan></text>
+  </g>
+</svg>

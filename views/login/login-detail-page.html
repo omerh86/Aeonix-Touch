@@ -1,0 +1,55 @@
+<div id="content"  class="login-detail-page intouch_page_single-coll p_login intouch it-login"
+     ng-keydown="onKeyDown($event)"
+     ng-controller="LoginDetailsController"
+     mobile-height>
+    <div class="title">
+        <span>{{'messages.welcome'| i18n }}</span>
+    </div>
+    <div class="col-xs-12">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>{{'messages.firstName'| i18n }}</label>
+                <input dir="auto" ng-model="user.userGeneralInfo.firstName" type="text" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+                <label>{{'messages.lastName'|i18n}}</label>
+                <input dir="auto" ng-model="user.userGeneralInfo.lastName" type="text" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>{{'messages.newPassword'|i18n}}</label>
+                <input dir="auto"  ng-model="newPasswordObj.newPassword" type="password" class="form-control">
+                <div ng-if="passwordFailures.length > 0" style="color:red;">Password is weak</div>
+                <div ng-repeat="failure in passwordFailures" style="color:red;">
+                    *{{failure|passwordFailures:this}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>{{'messages.confirmPassword'|i18n}}</label>
+                <input dir="auto" ng-model="newPasswordObj.repeatPassword" type="password" class="form-control">
+            </div>
+
+        </div>
+
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label for="loginPhoneDescription">{{ 'messages.phoneDescription' | i18n }}</label>
+                <input dir="auto" dir="auto" ng-model="user.userGeneralInfo.displayName" type="text" id="loginPhoneDescription" name="loginPhoneDescription" class="form-control">
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-12">
+        <div class="col-xs-12">
+            <div class="center-horizontally">
+                <button class="btn btn-center btn-ready" ng-click="next()">{{ 'messages.next' | i18n }}</button>
+            </div>
+        </div>
+    </div>
+    <div ng-show="error"  class="error-message">
+        <div><strong>{{'messages.ERROR'|i18n}}</strong></div>
+        {{error}}
+    </div>
+
+</div>

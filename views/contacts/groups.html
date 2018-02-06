@@ -1,0 +1,117 @@
+<div id="content" ng-controller="groupsController" class="intouch it-contacts" mobile-height
+     style="overflow-y: hidden !important;">
+    <div class="block-search">
+        <div class="input">
+            <input dir="auto"
+                   type="text"
+                   class="form-control"
+                   ng-keydown="onKeyDown($event)"
+                   ng-model="searchInput"
+                   ng-model-options="{debounce: 1000}"
+                   ng-change="search()"/>
+            <i class="icon-elem icon-search"></i>
+            <i class="icon-elem icon-clear-all-search"></i>
+        </div>
+        <div class="cancel hide"><a>Cancel</a></div>
+    </div>
+    <div class="menu-group">
+        <ul>
+            <li class="item-group" ng-click="showFavorites()">
+                <a>{{ 'messages.favorite' | i18n }}</a>
+            </li>
+            <li class="item-group" ng-click="showCallLog()">
+                <a>{{ 'messages.recent' | i18n }}
+                    <span class="recent-count" ng-if="missedCallsCounter.counter!=0">{{missedCallsCounter.counter}}</span>
+                </a>
+            </li>
+            <li class="item-group active">
+                <a>{{'messages.groups'| i18n }}</a>
+            </li>
+        </ul>
+    </div>
+
+	 <div class="contact-list"
+         ng-if="searchInput==''"
+         class="contact-list"
+         mobile-height>
+<!--<span class="local-spinner" ng-show="loadingStatuses.isLoadingFavorites"></span>-->
+		<div class="scrollme"
+             ng-scrollbar
+             rebuild-on="rebuild:me">
+    	<div class="item-contact" ng-repeat="contact in groupList"
+         on-finish-render="loopController">
+        <div class="contact"
+             ng-click="showContact(contact)">
+            <div class="user">
+                <a class="user-avatar">
+                    <div class="user-avatar-img">
+                        <img src="" ng-src="{{contact.internal.img}}" alt=""/>
+                    </div>
+                    <div ng-if="contact|showStatus"
+                         class="block-prof-status status" ng-class="contact|statusClassFromUser">
+                        <i class="icon-status" ng-class="contact|statusClassFromUser"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="user-info">
+                <div class="name-user">{{contact|contactName:this}}</div>
+                <div class="server-user" >{{contact|contactDescription:this}}</div>
+            </div>
+        </div>
+        <div class="action-contact">
+            <a ng-class="{active: contact.internal.isFav};">
+                <i class="icon-elem icon-favorit"
+                   ng-click="toggleFavorite($event, contact, contact.internal.isFav)">
+                </i>
+            </a>
+            <a><i class="icon-btn-contact icon-call"
+                  ng-click="makeCallToContact(contact, false)"></i></a>
+            <a ng-click="chatWithContact(contact)"><i
+                    class="icon-btn-contact icon-chat"></i></a>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <div class="contact-list" ng-if="searchInput!=''"
+         mobile-height>
+
+        <div infinite-scroll="loadMoreSearchItems()"
+             infinite-scroll-parent
+             infinite-scroll-immediate-check="false" class="scrollme" ng-scrollbar
+             rebuild-on="rebuild:me">
+            <div class="item-contact" ng-repeat="contact in searchResult"
+                 on-finish-render="loopController">
+                <div class="contact"
+                     ng-click="showContact(contact)">
+                    <div class="user">
+                        <a class="user-avatar">
+                            <div class="user-avatar-img">
+                                <img src="" ng-src="{{contact.internal.img}}" alt=""/>
+                            </div>
+                            <div class="block-prof-status">
+                                <i class="icon-status" ng-class="contact|statusClassFromUser"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="user-info">
+                        <div class="name-user">{{contact|contactName:this}}</div>
+                        <div class="server-user" >{{contact|contactDescription:this}}</div>
+                    </div>
+                </div>
+                <div class="action-contact">
+                    <a ng-class="{active: contact.internal.isFav};"
+                       ng-if="contact|showFavorite"
+                       ng-click="toggleFavorite($event, contact, contact.internal.isFav)">
+                        <i class="icon-elem icon-favorit"></i>
+                    </a>
+                    <a><i class="icon-btn-contact icon-call"
+                          ng-click="makeCallToContact(contact, false)"></i></a>
+                    <a><i ng-click="chatWithContact(contact)"
+                          class="icon-btn-contact icon-chat"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

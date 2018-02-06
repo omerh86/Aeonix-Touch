@@ -1,0 +1,72 @@
+#number-panel > div {
+    padding: 6px 16px;
+}
+.keypad {
+    background: none repeat scroll 0 0 #e9f4f7;
+    border-top: 1px solid #fff;
+    overflow: hidden;
+    padding: 6px 16px;
+}
+
+.keypad *{
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+.keypad .container-digits {
+    overflow: hidden;
+}
+.keypad .container-digits .item-digit {
+    cursor: pointer;
+    display: block;
+    float: left;
+    margin: 3px 0 16px;
+    text-align: center;
+    width: 33.3333%;
+}
+.item-digit .digit {
+    color: #01688f;
+    font-size: 23px;
+    font-weight: 300;
+}
+s
+@media (max-width: 340px) {
+    .item-digit .digit {
+        font-size: 25px;
+    }
+}
+
+.item-digit .letters {
+    color: #979797;
+    font-size: 12px;
+}
+
+.keypad .container-digits {
+    overflow: hidden;
+}
+
+.keypad .action-keypad {
+    overflow: hidden;
+    padding: 0px 0 5px;
+    text-align: center;
+}
+
+@media (max-width: 340px) {
+    .keypad .action-keypad {
+        overflow: hidden;
+        padding: 0px 0 5px;
+        text-align: center;
+    }
+}
+
+.keypad .action-keypad a {
+    display: inline-block;
+    margin: 0 30px;
+}
+
+.keypad .action-keypad .icon-btn {
+    width: 40px;
+    height: 40px;
+}

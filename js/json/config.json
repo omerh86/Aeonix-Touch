@@ -1,0 +1,56 @@
+{
+  "login":{
+    "userName": "action20",
+    "password": "12345",
+    "server": "iptel.org"
+  },
+  "contacts":[
+    {
+      "name": "action2000",
+      "sipUri": "sip:2003@192.168.1.115"
+    },
+    {
+      "name": "action2001",
+      "sipUri": "sip:2001@192.168.1.115"
+    },
+    {
+      "name": "action2002",
+      "sipUri": "sip:2002@192.168.1.115"
+    },
+    {
+      "name": "action2003",
+      "sipUri": "sip:2003@192.168.1.115"
+    },
+    {
+      "name": "action2100",
+      "sipUri": "sip:2000@192.168.1.115"
+    },
+    {
+      "name": "action2101",
+      "sipUri": "sip:2001@192.168.1.115"
+    },
+    {
+      "name": "action2102",
+      "sipUri": "sip:2002@192.168.1.115"
+    },
+    {
+      "name": "action2103",
+      "sipUri": "sip:2003@192.168.1.115"
+    },
+    {
+      "name": "action2200",
+      "sipUri": "sip:2000@192.168.1.115"
+    },
+    {
+      "name": "action2201",
+      "sipUri": "sip:2001@192.168.1.115"
+    },
+    {
+      "name": "action2202",
+      "sipUri": "sip:2002@192.168.1.115"
+    },
+    {
+      "name": "action2203",
+      "sipUri": "sip:2003@192.168.1.115"
+    }]
+}

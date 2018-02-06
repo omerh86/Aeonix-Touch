@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="102" height="102" viewBox="0 0 102 102">
+  <defs>
+    <style>
+
+      .cls-3 {
+        stroke: #ffffff;
+        stroke-linecap: round;
+        stroke-width: 2px;
+        fill: none;
+      }
+
+      .cls-4 {
+        fill: #ffffff;
+      }
+
+      .cls-5 {
+        stroke: #ffffff;
+        stroke-width: 2px;
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="idle">
+    <circle id="circle-1" class="cls-3" cx="51" cy="51" r="50"/>
+    <path d="M64.999,64.999 C64.999,64.999 74.999,64.999 74.999,64.999 C74.999,64.999 74.999,24.999 74.999,24.999 C74.999,24.999 35.000,24.999 35.000,24.999 C35.000,24.999 35.000,34.999 35.000,34.999 C35.000,34.999 37.000,35.000 37.000,35.000 C37.000,35.000 37.000,27.000 37.000,27.000 C37.000,27.000 73.000,27.000 73.000,27.000 C73.000,27.000 73.000,63.000 73.000,63.000 C73.000,63.000 65.000,63.000 65.000,63.000 C65.000,63.000 64.999,64.999 64.999,64.999 Z" id="path-1" class="cls-4" fill-rule="evenodd"/>
+    <rect id="rect-1" class="cls-5" x="26" y="36" width="40" height="40"/>
+  </g>
+</svg>

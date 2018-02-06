@@ -1,0 +1,66 @@
+<div class="chat-list-container"  ng-controller="chatListController" mobile-height>
+    <div id="content" mobile-height>
+        <div class="block-search">
+            <div class="input">
+                <input dir="auto"
+                       type="text"
+                       class="form-control"
+                       ng-keydown="onKeyDown($event)"
+                       ng-model="searchFilter"
+                       ng-model-options="{debounce: 1000}"
+                       ng-change="getContacts()"/>
+                <i class="icon-elem icon-search"></i>
+                <i class="icon-elem icon-clear-all-search"></i>
+            </div>
+            <div class="cancel hide"><a>Cancel</a></div>
+        </div>
+
+        <div class="contact-list" ng-if="searchFilter.length>0" mobile-height>
+
+            <div infinite-scroll="loadMoreSearchResults()"
+                 infinite-scroll-parent
+                 infinite-scroll-immediate-check="false" class="scrollme" ng-scrollbar
+                 rebuild-on="rebuild:me">
+                <div class="item-contact" ng-repeat="contact in searchResult"
+                     on-finish-render="loopController">
+                    <div class="contact"
+                         ng-click="startNewChat(contact)">
+                        <div class="user">
+                            <a class="user-avatar">
+                                <div class="user-avatar-img">
+                                    <img src="" ng-src="{{contact.internal.img}}" alt=""/>
+                                </div>
+                                <div class="block-prof-status">
+                                    <i class="icon-status" ng-class="contact|statusClassFromUser"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="user-info">
+                            <div class="name-user">{{contact|contactName:this}}</div>
+                            <div class="server-user" >{{contact|contactDescription:this}}</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat_list" ng-if="chatList.length && searchFilter.length==0">
+            <div class="list_item" ng-repeat="chat in chatList|limitTo:20" ng-click="chatWithContact(chat.contact)">
+                <div ng-class="chat.contact|statusIndicatorClass" ng-if="chat.contact|showStatus"></div>
+                <img class="contact_avatar" ng-src="{{chat.contact.internal.img}}" alt=""/>
+                <div class="row_1">
+                    <a ng-click="deleteChat(chat, $event)" class="delete_chat"></a>
+                    <div class="unseen" ng-if="chat.numberOfUnseenMessages>0">{{chat.numberOfUnseenMessages}}</div>
+                    <div class="contact_name">{{chat.contact|contactName:this}}</div>
+                </div>
+                <div class="row_2">
+                    <div class="date">{{chat.lastMessageTime|imDate}}</div>
+                    <div class="last_message">{{chat.lastMessage}}</div>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+
+    </div>
+</div>

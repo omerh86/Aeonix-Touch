@@ -1,0 +1,89 @@
+/* Custom radio element */
+
+/* Hiding default checkbox and Radio button design */
+input[type="radio"] {
+    cursor: pointer;
+    height: 14px;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    width: 14px;
+    top: -5px;
+    z-index: 12;
+}
+
+.aeonix-rtl input[type="radio"] {
+    right: 0px;
+}
+
+/* Disable outline when clicked*/
+input[type=radio]:checked,
+input[type=radio]:focus {
+    outline: none !important;
+}
+input[type=radio]+.custom-radio {
+    position: relative;
+    z-index: 11;
+    display: inline-block;
+    margin: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* Basic Checkbox styles */
+input[type="radio"] + .custom-radio::before {
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #2091cf;
+    content: " ";
+    display: inline-block;
+    font-family: fontAwesome;
+    font-size: 8px;
+    font-weight: normal;
+    height: 14px;
+    line-height: 14px;
+    margin-right: 8px;
+    min-width: 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Checked state styles */
+input[type=radio]:checked+.custom-radio::before {
+    display: inline-block;
+    content: '\f00c';
+    background-color: #F5F8FC;
+    border-color: #adb8c0;
+	background-size: contain !important;
+}
+
+/* Hover state styles */
+input[type=radio]:active+.custom-radio::before,
+input[type=radio]+.custom-radio:active::before {
+    border-color: #adb8c0;
+}
+
+
+/* Disabled state styles */
+input[type=radio]:disabled+.custom-radio::before,
+input[type=radio][disabled]+.custom-radio::before,
+input[type=radio].disabled+.custom-radio::before {
+    background-color: #DDD !important;
+    border-color: #CCC !important;
+    box-shadow: none !important;
+    color: #BBB;
+}
+
+/* Styles for Radio button */
+input[type=radio]+.custom-radio::before {
+    border-radius: 50%;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 33px;
+}
+
+input[type=radio]:checked+.custom-radio::before {
+    content: "\2022";
+	background-size: contain !important;
+}

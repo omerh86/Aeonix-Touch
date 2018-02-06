@@ -1,0 +1,60 @@
+{
+  "name": "humanize-duration",
+  "authors": [
+    "Evan Hahn <me@evanhahn.com> (http://evanhahn.com)",
+    "Martin Prins (https://github.com/magarcia)",
+    "Filipi Siqueira (https://github.com/filipi777)",
+    "Peter Rekdal Sunde (https://github.com/peters)",
+    "Michał Janiec (https://github.com/mjjaniec)",
+    "Eileen Li (https://github.com/eileen3)"
+  ],
+  "version": "2.5.0",
+  "description": "Convert millisecond durations to English and many other languages.",
+  "main": "humanize-duration.js",
+  "homepage": "https://github.com/EvanHahn/HumanizeDuration.js",
+  "keywords": [
+    "humanize",
+    "duration",
+    "time",
+    "hours",
+    "minutes",
+    "seconds",
+    "days",
+    "years",
+    "months",
+    "english",
+    "spanish",
+    "french",
+    "catalan",
+    "portuguese",
+    "korean",
+    "norwegian",
+    "german",
+    "danish",
+    "russian",
+    "turkish",
+    "hungarian"
+  ],
+  "license": "WTFPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/EvanHahn/HumanizeDuration.js.git"
+  },
+  "_release": "2.5.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.5.0",
+    "commit": "ae89fa02b32b6b4e93f771d02a8fb3c4d181ff9a"
+  },
+  "_source": "git://github.com/EvanHahn/HumanizeDuration.js.git",
+  "_target": "~2.5.0",
+  "_originalSource": "humanize-duration",
+  "_direct": true
+}

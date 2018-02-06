@@ -1,0 +1,60 @@
+<div class="intouch it-login" ng-keydown="onKeyDown($event)" ng-controller="LoginController" mobile-height>
+    <div id="header">
+        <div class="title">
+            <h2><a><i class="intouch-icon min-logo icon-right"></i>Aeonix Touch</a></h2>
+        </div>
+    </div>
+    <div id="content">
+        <div class="title">
+            <span>{{'messages.welcome'| i18n }} </span>
+        </div>
+        <div class="form form-login">
+            <form name="loginForm">
+                <div class="form-group">
+                    <input name="username"
+                           ng-pattern="'[a-zA-Z0-9!\\-_.]+'"
+                           dir="auto"
+                           type="text"
+                           placeholder="{{'messages.userName'| i18n }}"
+                           class="form-control"
+                           ng-model="loginName"
+                           autofocus>
+                </div>
+                <div class="form-group">
+                    <input dir="auto" type="password" placeholder="{{'messages.password'|i18n}}" class="form-control"  ng-model="password">
+                </div>
+                <div class="form-group">
+                    <input dir="auto" type="text" placeholder="{{'messages.server'| i18n }}" class="form-control"  ng-model="server">
+                </div>
+                <div class="form-group">
+                    <input dir="auto" type="text" placeholder="{{'messages.proxy'| i18n }}" class="form-control" ng-model="proxy">
+                </div>
+                <div class="form-group">
+                    <select class="form-control" ng-model="locale" ng-options="locale.languageName for locale in locales" ng-change="onLanguageChanged()">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="custom_checkbox_inline">
+                        <label class="rtl-float custom_checkbox">
+                            <input type="checkbox" ng-model="rememberMe">
+                            <span></span>
+                        </label>
+                        {{'messages.rememberMe'| i18n }}
+                    </div>
+                </div>
+                <div class="center-horizontally">
+                    <button ng-disabled="!loginForm.username.$valid" class="btn btn-center btn-ready"  ng-click="nextDetail()">{{'messages.next'|i18n}}</button>
+                </div>
+                <div>
+                    <div>
+                        <div ng-show="error"  class="error-message">
+                            <div><strong>{{'messages.ERROR'|i18n}}</strong></div>
+                            {{error}}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="footer"></div>
+</div>

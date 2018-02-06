@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Aeonix Touch</title>
+    <meta name="description" content="Aeonix Intouch">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <link rel="stylesheet" href="css/calling.css"/>
+    <link rel="stylesheet" href="css/chat.css"/>
+    <link rel="stylesheet" href="css/contact.css"/>
+    <link rel="stylesheet" href="css/custom-checkbox.css"/>
+    <link rel="stylesheet" href="css/custom-radio.css"/>
+    <link rel="stylesheet" href="css/dropdown.css"/>
+    <link rel="stylesheet" href="css/form.css"/>
+    <link rel="stylesheet" href="css/icon.css"/>
+    <link rel="stylesheet" href="css/keypad.css"/>
+    <link rel="stylesheet" href="css/list.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/menu.css"/>
+    <link rel="stylesheet" href="css/number-panel.css"/>
+    <link rel="stylesheet" href="css/popup.css"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/ng-scrollbar.min.css"/>
+    <link rel="stylesheet" href="css/call-log.css"/>
+    <link rel="stylesheet" href="css/chat-list.css"/>
+    <link rel="stylesheet" href="bower_components/angular_material/angular-material.min.css">
+</head>
+<body ng-app="aeonixApp">
+<div id="theElement"></div>
+
+<div id="touchHook" ng-keydown="onKeyDown($event)" ng-controller="mainCtrl" ng-click="onAppClick()" class="intouch" style="overflow: hidden" ng-class="{'aeonix-rtl':isRTL}">
+    <ui-view></ui-view>
+</div>
+<div id="chat-deletion-progress" class="intouch-spinner" style="display: none" intouch-spinner>
+    <div>
+        <p>{{spinnerMessage}}</p>
+        <img alt="" src="img/loading.gif"/>
+    </div>
+</div>
+
+<div class="screen-lock" style="display: none" screen-lock>
+</div>
+
+<ng-include src="'views/share/error-popup.html'"></ng-include>
+
+<!--jquery is added to support ng-infinite-scroll module-->
+<script src="external_components/jquery-1.11.3.min.js"></script>
+
+<script src="bower_components/angular/angular.js"></script>
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular/angular-animate.js"></script>
+<script src="bower_components/angular/angular-aria.js"></script>
+<script src="bower_components/angular/angular-messages.js"></script>
+<script src="bower_components/angular/angular-touch.js"></script>
+<script src="bower_components/angular/angular-cookies.js"></script>
+<script src="bower_components/angular/angular-sanitize.js"></script>
+
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/ng-scrollbar/dist/ng-scrollbar.min.js"></script>
+<script src="bower_components/momentjs/min/moment.min.js"></script>
+<script src="bower_components/momentjs/min/locales.min.js"></script>
+<script src="bower_components/humanize-duration/humanize-duration.js"></script>
+<script src="external_components/ng-infinite-scroll.min.js"></script>
+<script src="bower_components/lodash/lodash.min.js"></script>
+<script src='bower_components/angular-local-storage/dist/angular-local-storage.min.js'></script>
+<script src='bower_components/angular-localization/angular-localization.min.js'></script>
+<script src="external_components/CanvasInput.min.js"></script>
+
+<script src="external_components/ng-scrollbar.js"></script>
+<script src="bower_components/angular_material/angular-material.min.js"></script>
+
+<!---->
+
+<!---->
+
+
+<script src="js/defines.js"></script>
+<script src="js/log.js"></script>
+
+<script src="js/utils/angularUtils.js"></script>
+<script src="js/utils/debugUtils.js"></script>
+<script src="js/utils/stringUtils.js"></script>
+<script src="js/utils/arrayUtils.js"></script>
+<script src="js/utils/localizationUtils.js"></script>
+<script src="js/bridge.js"></script>
+<script src="js/stateMachine.js"></script>
+
+<script src="js/app.js"></script>
+
+
+<!--Controllers-->
+<script src="js/controllers/mainCtrl.js"></script>
+<script src="js/controllers/loginController.js"></script>
+<script src="js/controllers/favoritesController.js"></script>
+<script src="js/controllers/callLogController.js"></script>
+<script src="js/controllers/groupsController.js"></script>
+<script src="js/controllers/chatListController.js"></script>
+<script src="js/controllers/chatController.js"></script>
+<script src="js/controllers/callController.js"></script>
+<script src="js/controllers/tabsController.js"></script>
+<script src="js/controllers/keypadController.js"></script>
+<script src="js/controllers/dialPadController.js"></script>
+<script src="js/controllers/dialPadListController.js"></script>
+<script src="js/controllers/settingsController.js"></script>
+<script src="js/controllers/aboutController.js"></script>
+<script src="js/controllers/loginDetailsController.js"></script>
+<script src="js/controllers/mainHeaderController.js"></script>
+<script src="js/controllers/callQueueController.js"></script>
+<script src="js/controllers/alertController.js"></script>
+<script src="js/controllers/contactDetailsController.js"></script>
+<script src="js/controllers/changePasswordController.js"></script>
+<script src="js/controllers/contactsController.js"></script>
+<script src="js/controllers/modals/answerAfterModalController.js"></script>
+<script src="js/controllers/modals/divertModalController.js"></script>
+<script src="js/controllers/modals/deleteRecentModalController.js"></script>
+<script src="js/controllers/modals/wrongVersionModalController.js"></script>
+
+
+
+
+<!-- Model -->
+<script src="js/models/Call.js"></script>
+<script src="js/models/UserStatusInfo.js"></script>
+<script src="js/models/Contact.js"></script>
+<script src="js/models/ManagedCalls.js"></script>
+<script src="js/models/ContactsLists.js"></script>
+<script src="js/models/CstaRequests.js"></script>
+<script src="js/models/CstaDeviceId.js"></script>
+<script src="js/models/Chat.js"></script>
+<script src="js/models/CommonCounter.js"></script>
+<script src="js/models/ContactList.js"></script>
+<script src="js/models/SipProxyInfo.js"></script>
+<script src="js/models/ConnectionSettings.js"></script>
+<script src="js/models/Credentials.js"></script>
+
+
+<!--Services-->
+<script src="js/services/loggingSrv.js"></script>
+<script src="js/services/nativeSrv.js"></script>
+<script src="js/services/sipProxyService.js"></script>
+<script src="js/services/storageSrv.js"></script>
+<script src="js/services/connectionSrv.js"></script>
+<script src="js/services/deviceSrv.js"></script>
+<script src="js/services/cstaPhoneSrv.js"></script>
+<script src="js/services/localPhoneSrv.js"></script>
+<script src="js/services/phoneSrv.js"></script>
+<script src="js/services/pictureSrv.js"></script>
+<script src="js/services/contactSrv.js"></script>
+<script src="js/services/loginSrv.js"></script>
+<script src="js/services/callsSrv.js"></script>
+<script src="js/services/chatSrv.js"></script>
+<script src="js/services/tabsSrv.js"></script>
+<script src="js/services/alertSrv.js"></script>
+<script src="js/services/userSrv.js"></script>
+<script src="js/services/settingsSrv.js"></script>
+<script src="js/services/utilsSrv.js"></script>
+<script src="js/services/infoSrv.js"></script>
+<script src="js/services/cstaMonitoringSrv.js"></script>
+<script src="js/services/nativeToJsBridgeSrv.js"></script>
+<script src="js/services/favoritesSrv.js"></script>
+<script src="js/services/searchSrv.js"></script>
+<script src="js/services/backNavigationSrv.js"></script>
+<script src="js/services/callLogSrv.js"></script>
+<script src="js/services/localPhoneSrv.js"></script>
+<script src="js/services/dialPlanSrv.js"></script>
+<script src="js/services/callServices/appVisibilityServiceHelperSrv.js"></script>
+<script src="js/services/callServices/externalCallSrv.js"></script>
+<script src="js/services/callServices/primaryCallSrv.js"></script>
+<script src="js/services/callServices/tonesSrv.js"></script>
+<script src="js/services/voiceMailSrv.js"></script>
+<script src="js/services/notificationSrv.js"></script>
+<script src="js/services/groupSrv.js"></script>
+<script src="js/services/connectionAddressFinderSrv.js"></script>
+<script src="js/services/networkListenerSrv.js"></script>
+<script src="js/services/changePasswordSrv.js"></script>
+
+
+<script src="js/test/callsSrvTest.js"></script>
+
+
+<!--Providers-->
+<script src="js/providers/usersPrv.js"></script>
+
+<script src="js/directives/directives.js"></script>
+<script src="bower_components/angular-timer/dist/angular-timer.js"></script>
+
+<script src="js/filters/filters.js"></script>
+
+
+<!--<script src="js/test/chatTest.js"></script>-->
+
+</body>
+</html>
+

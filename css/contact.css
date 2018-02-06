@@ -1,0 +1,142 @@
+/* Contact details */
+.contact-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-details {
+    background: none repeat scroll 0 0 #f2f7f9;
+    padding: 10px 16px !important;
+}
+.contact-details .user {
+    float: left;
+    margin-right: 8px;
+    position: relative;
+}
+.contact-details .user-info {
+    display: block;
+    float: left;
+    padding: 16px 0;
+}
+.contact-details .user-info > div {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+.contact-details .user .user-avatar-img {
+    border-radius: 50%;
+    height: 89px;
+    overflow: hidden;
+    width: 89px;
+}
+.contact-details .user .user-avatar-img img {
+    max-width: 89px;
+    min-width: 89px;
+}
+.contact-details .user-info .status {
+    font-size: 16px;
+    line-height: 17px;
+    margin-bottom: 5px;
+}
+.contact-details .user-info .status i {
+    display: block;
+    float: left;
+    margin: 0 10px 0 0;
+}
+.contact-details .user-info .status.green {color:#38B32B;}
+.contact-details .user-info .status.orange {color: #D78A02;}
+.contact-details .user-info .status.red {color: #CA3636;}
+.contact-details .user-info .status.gray {color: #B3B3B3;}
+.contact-details .user-info .status.purple {color: #AC2BB4;}
+.contact-details .user-info .name-user {
+    color: #4a4a4a;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+
+.contact-details .user-info .server-user {
+    color: #979797;
+    font-size: 18px;
+    line-height: 17px;
+}
+.contact-details .favorit-contact {
+    display: block;
+    float: right;
+    padding: 16px 0;
+}
+.contact-details .contact-action {
+    display: inline-block;
+    padding: 8px 0;
+    text-align: right;
+    width: 100%;
+}
+.contact-details .contact-action a {
+    display: inline-block;
+    margin: 0 0 0 16px;
+    position: relative;
+}
+.contact-details .contact-action a:first-child {
+    margin: 0;
+}
+.contact-action a .camp-on-indicator {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+/* Contact info */
+.contact-info {
+    background: none repeat scroll 0 0 #f2f7f9;
+    flex: 1;
+    overflow-y: scroll;
+}
+.contact-info .item {
+    display: block;
+    margin: 16px 0;
+    overflow: hidden;
+    position: relative;
+}
+.contact-info .item .title {
+    display: block;
+    font-size: 18px !important;
+    margin: 0 !important;
+    text-align: left;
+    width: 100%;
+}
+.contact-info .item .info-text {
+    display: block;
+    float: left;
+    font-size: 16px;
+    height: 50px;
+}
+.contact-info .item .info-text .desc {
+    line-height: 43px;
+}
+.contact-info .item .info-text .desc i {
+    float: right;
+    margin: 11px 0 0 3px;
+}
+.contact-info .item .info-action {
+    display: block;
+    float: right;
+}
+.contact-info .item .info-action a {
+    display: block;
+    float: left;
+    margin-left: 25px;
+    text-align: right;
+}
+.contact-info .item .info-action a:first-child {
+    margin-left: 0;
+}
+
+.contact-info .alias-item {
+    height: 80px;
+    padding: 15px 0px;
+}
+
+.aeonix-rtl .contact_info.contact-tab-info .buttons{
+    float: left;
+}

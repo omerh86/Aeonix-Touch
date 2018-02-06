@@ -1,0 +1,118 @@
+.frame-popup {
+    display: none;
+}
+.frame-popup.open {
+    display: block;
+}
+.bg-popup-block {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    overflow-y: hidden !important;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 200;
+}
+.popup {
+    background: none repeat scroll 0 0 #EFF4F6;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 201;
+    width: 106px;
+    height: 160px;
+}
+.popup-language {
+    width: 280px;
+    height: 338px;
+}
+
+
+.popup .head-popup {
+    background: none repeat scroll 0 0 #00688f;
+    height: 48px;
+    padding: 13px 16px;
+}
+.popup .head-popup .title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+.popup .foot-popup a.action-button {
+    color: #4a4a4a;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    height: 48px;
+    padding: 11px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+.cont-popup ul.list li.item {
+    border-bottom: 1px solid #dedede;
+    font-size: 16px;
+    height: 48px;
+    line-height: 18px;
+    padding: 11px 16px;
+    position: relative;
+}
+.cont-popup ul.list li.checked::after {
+    background: url("../images/select-item-checked.svg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    bottom: 0;
+    content: "";
+    height: 14px;
+    left: auto;
+    margin: auto;
+    position: absolute;
+    right: 16px;
+    top: 0;
+    width: 18px;
+	background-size: contain !important;
+}
+.cont-popup ul.list li:active,
+.cont-popup ul.list li:focus {
+    background: none repeat scroll 0 0 #fff;
+    cursor: pointer;
+}
+
+.popup-new-call-dialog {
+    height: 193px;
+    width: 280px;
+}
+
+/* popup-error */
+.popup-error {
+    width: 267px;
+	height: 206px;
+}
+.popup-error .head-popup {
+    background: none repeat scroll 0 0 #CA3636;
+    height: 48px;
+    padding: 13px 16px;
+}
+.popup-error .head-popup .title:before {
+    background-image: url("../images/element/icon-alert-white.svg");
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    content: "";
+    display: block;
+    float: left;
+    height: 17px;
+    margin: 0 -20px 0 0;
+    width: 20px;
+}
+.popup-error .cont-popup {
+    border-bottom: 1px solid #dedede;
+    color: #4a4a4a;
+    font-size: 18px;
+    line-height: 21px;
+    padding: 16px;
+}

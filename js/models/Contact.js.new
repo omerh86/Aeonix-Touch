@@ -1,0 +1,551 @@
+var contactLogger =  logSrv.getLogger('Contact');
+
+
+function ContactId(id, idType) {
+    this.id = id;
+    this.idType = idType;
+}
+
+ContactId.prototype.toString = function() {
+    return this.id+"_"+this.idType.name;
+}
+
+var contactCounter = 0;
+
+function Contact(contact, internal) {
+    this.objectId = contactCounter++;
+    this.contact = contact;
+    this.internal = internal;
+}
+
+function createNumberContact(contact, internal) {
+    var c = new Contact(contact, internal);
+    c.number = c.getAlias();
+
+}
+
+
+Contact.getContactTypeFromServerContactInfo = function(contactInfo) {
+    var logger = contactLogger.getChildLogger("getContactTypeFromServerContactInfo");
+    var contactType  = eContactType.unknown;
+    try {
+        logger.logGroup("getContactTypeFromServerContactInfo called", ["contactInfo"], [contactInfo],eLogLevel.finer);
+        contactType = eContactType.parse(contactInfo.serviceType);
+    }catch(err) {
+        logger.error(err);
+    }
+    logger.logCollapsed("returned value", contactType,eLogLevel.finer);
+
+    return contactType;
+}
+
+Contact.createFromAlias = function(alias, perm) {
+    var logger = contactLogger.getChildLogger("createFromAlias");
+    logger.logGroup("createFromAlias called", ["alias", "perm"], [alias, perm],eLogLevel.finer);
+
+    var type = eContactType.unknown;
+
+    var contactInfo = {
+          "aliases": [
+            {
+              "completeAliasName": alias,
+              "completeInterGroupAccess": false,
+              "configuration": "COMPLETE"
+            }
+          ],
+          "displayName": alias,
+          "emailAddress": "",
+          "extAliases": [],
+          "firstName": "",
+          "imageSignature": undefined,
+          "lastName": "",
+          "serviceType": "",
+          "userName": ""
+    };
+
+
+
+    var internal = {
+        "type": type,
+        isFav: false,
+        status: UserStatusInfo.unknown,
+        img: type.isGroup ? "img/temp_users/group-placeholder_60.png" : "img/user-placeholder.png",
+        imgBig: type.isGroup ? "img/temp_users/group-placeholder_60-big.png" : "img/user-placeholder-big.png"
+    }
+
+
+    var contact = new Contact(contactInfo, internal);
+    logger.logCollapsed("returned value", contact,eLogLevel.finer);
+    return contact;
+}
+
+Contact.createFromUserName = function(userName) {
+
+    var logger = contactLogger.getChildLogger("createFromUserName");
+    logger.logGroup("createFromUserName called", ["userName"], [userName],eLogLevel.finer);
+
+    var contactInfo = {
+          "aliases": [],
+          "displayName": "",
+          "emailAddress": "",
+          "extAliases": [],
+          "firstName": "",
+          "imageSignature": undefined,
+          "lastName": "",
+          "serviceType": "USR",
+          "userName": userName
+    };
+
+    var type = eContactType.unknown;
+
+    var internal = {
+        "type": type,
+        isFav: false,
+        status: UserStatusInfo.unknown,
+        img: "img/user-placeholder.png",
+        imgBig: "img/user-placeholder-big.png"
+    }
+
+
+    var contact = new Contact(contactInfo, internal);
+    logger.logCollapsed("returned value", contact,eLogLevel.finer);
+    return contact;
+}
+
+Contact.createNWayConference = function() {
+    var logger = contactLogger.getChildLogger("createNWayConference");
+    logger.finest("createNWayConference called");
+
+    var contactInfo = {
+          "aliases": [],
+          "displayName": "Conference",
+          "emailAddress": "",
+          "extAliases": [],
+          "firstName": "",
+          "imageSignature": 0,
+          "lastName": "",
+          "serviceType": "",
+          "userName": ""
+    };
+
+
+    var internal = {
+        type: eContactType.nWayConference,
+        isFav: false,
+        status: UserStatusInfo.unknown,
+        img: "img/temp_users/group-placeholder_60.png",
+        imgBig: "img/temp_users/group-placeholder_60.png"
+    }
+
+
+    var contact = new Contact( contactInfo, internal);
+    logger.logCollapsed("returned value", contact,eLogLevel.finer);
+    return contact;
+}
+
+Contact.createAnonymous = function() {
+    var logger = contactLogger.getChildLogger("createAnonymous");
+    logger.finest("createAnonymous called");
+
+    var contactInfo = {
+          "aliases": [],
+          "displayName": "Anonymous",
+          "emailAddress": "",
+          "extAliases": [],
+          "firstName": "",
+          "imageSignature": 0,
+          "lastName": "",
+          "serviceType": "USR",
+          "userName": "anonymous"
+    };
+
+
+    var internal = {
+        type: eContactType.externalAnonymous,
+        isFav: false,
+        status: UserStatusInfo.unknown,
+        img: "img/user-placeholder.png",
+        imgBig: "img/user-placeholder-big.png"
+    }
+
+
+    var contact = new Contact( contactInfo, internal);
+    logger.logCollapsed("returned value", contact,eLogLevel.finer);
+    return contact;
+}
+
+
+
+Contact.createExternal = function(displayName, numbers) {
+
+
+    var aliases  = [];
+    if (!arrayUtils.isEmpty(numbers)) {
+        for(var i=0;i<numbers.length;i++) {
+            var a = {
+              "completeAliasName": numbers[i],
+              "completeInterGroupAccess": false,
+              "configuration": "COMPLETE"
+            };
+            aliases.push(a);
+        }
+    }
+    var contactInfo = {
+      "aliases": aliases,
+      "displayName": displayName,
+      "emailAddress": "",
+      "extAliases": [],
+      "firstName": "",
+      "imageSignature": 0,
+      "lastName": "",
+      "serviceType": "",
+      "userName": ""
+    }
+
+
+    var internal = {
+        type: eContactType.external,
+        isFav: false,
+        status: UserStatusInfo.unknown,
+        img: "img/user-placeholder.png",
+        imgBig: "img/user-placeholder-big.png"
+    }
+
+
+    contact = new Contact(contactInfo, internal);
+
+    return contact;
+
+}
+
+
+Contact.createRestrictedUser = function(alias) {
+    var logger = contactLogger.getChildLogger("createRestrictedUser");
+    logger.logGroup("createRestrictedUser called", ["alias"], [alias],eLogLevel.finer);
+
+    var aliases;
+    if (alias && alias!="") {
+        aliases = [];
+    }else {
+        aliases = [alias];
+    }
+
+
+    var contactInfo = {
+          "aliases": aliases,
+          "displayName": "restricted",
+          "emailAddress": "",
+          "extAliases": [],
+          "firstName": "",
+          "imageSignature": 0,
+          "lastName": "",
+          "serviceType": "USR",
+          "userName": "restricted"
+    };
+
+
+    var internal = {
+        type: eContactType.restrictedUser,
+        isFav: false,
+        status: UserStatusInfo.unknown,
+        img: "img/user-placeholder.png",
+        imgBig: "img/user-placeholder-big.png"
+    }
+
+    var contact =  new Contact(contactInfo, internal);
+
+    logger.logCollapsed("returned value", contact,eLogLevel.finer);
+    return contact;
+}
+
+
+Contact.createFromServerGroupInfo = function(groupInfo) {
+
+    var logger = contactLogger.getChildLogger("createFromServerGroupInfo");
+    logger.logGroup("createFromServerGroupInfo called", ["groupInfo"], [groupInfo],eLogLevel.finer);
+
+    var type = eContactType.parse(groupInfo.serviceName);
+    picture = type.isGroup ? "img/temp_users/group-placeholder_60.png" : "img/user-placeholder.png";
+
+    var displayName;
+
+   if (groupInfo.description && groupInfo.description!="") {
+    displayName = groupInfo.description;
+   }else if (groupInfo.displayName && groupInfo.displayName!="") {
+    displayName = groupInfo.displayName;
+   }else {
+    displayName ="";
+   }
+
+    var contactInfo = {
+          "aliases": [
+             {
+               "completeAliasName": groupInfo.alias,
+               "completeInterGroupAccess": false,
+               "configuration": "COMPLETE"
+             }
+          ],
+          "displayName": displayName,
+          "emailAddress": groupInfo.emailAddress,
+          "extAliases": [],
+          "firstName": groupInfo.firstName,
+          "imageSignature": 0,
+          "lastName": groupInfo.lastName,
+          "serviceType": groupInfo.serviceName,
+          "userName": groupInfo.alias
+    };
+
+    var internal = {
+        "type": type,
+        isFav: false,
+        status: UserStatusInfo.unknown,
+        img: picture,
+        imgBig: picture
+    }
+
+    var contact =  new Contact(contactInfo, internal);
+
+    logger.logCollapsed("returned value", contact,eLogLevel.finer);
+    return contact;
+}
+
+
+Contact.createFromServerContactInfo = function(contactInfo, serverPresenceInfo, pictureSrv) {
+    var logger = contactLogger.getChildLogger("createFromServerContactInfo");
+    logger.logGroup("createFromServerContactInfo called", ["contactInfo", "serverPresenceInfo"], [contactInfo, serverPresenceInfo],eLogLevel.finer);
+
+    var type = Contact.getContactTypeFromServerContactInfo(contactInfo);
+
+    if (type===eContactType.user && contactInfo.userName && contactInfo.userName!=="") {
+        picture = pictureSrv.getPicture(contactInfo.userName, contactInfo.imageSignature);
+    }else {
+        picture = type.isGroup ? "img/temp_users/group-placeholder_60.png" : "img/user-placeholder.png";
+    }
+
+    var internal = {
+        "type": type,
+        isFav: false,
+        status: UserStatusInfo.fromServerPresenceInfo(serverPresenceInfo),
+        img: picture,
+        imgBig: picture
+    }
+
+
+
+    if (!contactInfo.displayName) {
+        contactInfo.displayName='';
+    }
+    if (!contactInfo.emailAddress) {
+        contactInfo.emailAddress='';
+    }
+    if (!contactInfo.firstName) {
+        contactInfo.firstName='';
+    }
+    if (!contactInfo.lastName) {
+        contactInfo.lastName='';
+    }
+
+
+    var contact =  new Contact(contactInfo, internal);
+    if (type.isGroup || type==eContactType.voiceMail) {
+        contact.contact.userName = contact.getAlias();
+        contact.contact.displayName = contactInfo.description;
+    }
+    logger.logCollapsed("returned value", contact,eLogLevel.finer);
+    return contact;
+}
+
+Contact.compareContactsByName = function(contact1, contact2) {
+    var name1 = contact1.getName();
+    var name2 = contact2.getName();
+    if (name1 < name2)
+        return -1;
+    if (name1 > name2)
+        return 1;
+    return 0;
+}
+
+Contact.sortContactListByName = function(contactList) {
+    contactList.sort(Contact.compareContactsByName);
+}
+
+Contact.prototype.updateWithServerInfo  = function(contactInfo, serverPresenceInfo, pictureSrv) {
+
+    var logger = contactLogger.getChildLogger("updateWithServerInfo");
+    logger.logGroup("updateWithServerInfo called", ["contactInfo", "serverPresenceInfo"], [contactInfo, serverPresenceInfo],eLogLevel.finer);
+
+
+    this.contact.aliases = contactInfo.aliases;
+    this.contact.displayName = contactInfo.displayName;
+    this.contact.emailAddress = contactInfo.emailAddress;
+    this.contact.extAliases = contactInfo.extAliases;
+    this.contact.firstName = contactInfo.firstName;
+    this.contact.lastName = contactInfo.lastName;
+    this.contact.imageSignature = contactInfo.imageSignature;
+
+    var type = Contact.getContactTypeFromServerContactInfo(contactInfo);
+
+    if (type===eContactType.user) {
+        picture = pictureSrv.getPicture(contactInfo.userName, contactInfo.imageSignature);
+        this.internal.img = picture;
+        this.internal.imgBig = picture;
+    }
+
+    if (serverPresenceInfo) {
+        this.internal.status =  UserStatusInfo.fromServerPresenceInfo(serverPresenceInfo);
+    }
+
+    logger.logCollapsed("updateWithServerInfo completed", this,eLogLevel.finer);
+}
+
+Contact.prototype.getAlias = function() {
+    var logger = contactLogger.getChildLogger("getAlias");
+    logger.logGroup("getAlias called", ["this"], [this],eLogLevel.finer);
+
+    var alias;
+
+    if (this.contact.aliases && this.contact.aliases[0]) {
+        alias = this.contact.aliases[0].completeAliasName;
+    } else if (this.contact.extAliases) {
+        alias = this.contact.extAliases[0];
+    }
+
+    logger.finest("return value - ",alias);
+    return alias;
+}
+
+
+
+Contact.prototype.getContactId = function() {
+    var logger = contactLogger.getChildLogger("getContactId");
+    logger.logGroup("getContactId called", ["this"], [this],eLogLevel.finer);
+
+    var contactId;
+    var alias = this.getAlias();
+    if (this.internal.type.isGroup || alias) {
+        contactId = new ContactId(alias, eIdType.alias);
+    }else {
+        contactId = new ContactId(this.contact.userName, eIdType.userName);
+    }
+
+    logger.logCollapsed("returned value", contactId,eLogLevel.finer);
+    return contactId;
+}
+
+
+Contact.prototype.sameContact = function(user) {
+    var logger = contactLogger.getChildLogger("sameContact");
+    logger.logGroup("sameContact called", ["this", "user"], [this, user],eLogLevel.finer);
+
+    var same;
+    if (this.internal.type!==eContactType.externalAnonymous && this.internal.type!==eContactType.restrictedUser) {
+        same = this.getAlias()===user.getAlias();
+    }
+    logger.finest("return value - ",same);
+    return same;
+}
+
+
+Contact.prototype.hasAlias = function(alias) {
+    var logger = contactLogger.getChildLogger("hasAlias");
+    logger.logGroup("hasAlias called", ["this", "alias"], [this, alias],eLogLevel.finer);
+
+    var has = false;
+    if (this.contact.aliases && this.contact.aliases.length) {
+        for(var i=0;i<this.contact.aliases.length;i++) {
+            if (this.contact.aliases[i].completeAliasName==alias) {
+                has = true;
+                break;
+            }
+        }
+    }
+    if (!has && this.contact.extAliases && this.contact.extAliases.length){
+        for(var i=0;i<this.contact.extAliases.length;i++) {
+            if (this.contact.extAliases[i]==alias) {
+                has = true;
+                break;
+            }
+        }
+    }
+
+    logger.finest("return value - ",has);
+    return has;
+}
+
+Contact.prototype.findAlias = function(aliasPart) {
+    var logger = contactLogger.getChildLogger("findAlias");
+    logger.logGroup("findAlias called", ["this", "aliasPart"], [this, aliasPart],eLogLevel.finer);
+
+    var alias ='';
+    if (this.contact.aliases && this.contact.aliases.length) {
+        for(var i=0;i<this.contact.aliases.length;i++) {
+            if (this.contact.aliases[i].completeAliasName.indexOf(aliasPart)!=-1) {
+                alias= this.contact.aliases[i].completeAliasName;
+                break;
+            }
+        }
+    }
+    if (alias=='' && this.contact.extAliases && this.contact.extAliases.length){
+        for(var i=0;i<this.contact.extAliases.length;i++) {
+            if (this.contact.extAliases[i].indexOf(alias)!=-1) {
+                alias = this.contact.extAliases[i];
+                break;
+            }
+        }
+    }
+
+    logger.finest("return value - ",alias);
+    return alias;
+}
+
+
+Contact.prototype.getName = function() {
+    var logger = contactLogger.getChildLogger("getName");
+    logger.logGroup("getName called", ["this"], [this],eLogLevel.finer);
+
+    var name ="";
+    if (this.contact.description && this.contact.description!="") {
+        name = this.contact.description;
+    }else if (this.contact.firstName && this.contact.firstName!="" && this.contact.lastName && this.contact.lastName!="") {
+        //todo michael
+        name = this.contact.firstName + " " + this.contact.lastName;
+    }else if (this.contact.displayName && this.contact.displayName!="") {
+        name = this.contact.displayName;
+    } else if (this.contact.aliases && this.contact.aliases[0]) {
+        name = this.contact.aliases[0].completeAliasName;
+    }
+
+    return name;
+}
+
+
+
+
+Contact.prototype.setFavorite = function(isFav) {
+    this.internal.isFav = isFav;
+    if (this.contactSrv) {
+        this.contactSrv.onFavoriteModified(this);
+    }
+}
+
+
+
+Contact.prototype.indexInList = function(list) {
+    var logger = contactLogger.getChildLogger("indexInList");
+    logger.logGroup("indexInList called", ["list"], [list],eLogLevel.finer);
+
+    var index = -1;
+    for (var i=0;i<list.length;i++) {
+        var contact = list[i];
+        if (this.sameContact(contact)) {
+            index = i;
+            break;
+        }
+    }
+
+    logger.finest("returned value - ", index);
+    return index;
+}
+
+Contact.anonymousContact = Contact.createAnonymous();
+

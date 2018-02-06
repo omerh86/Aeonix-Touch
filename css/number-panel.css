@@ -1,0 +1,104 @@
+#number-panel .pause-call {
+    height: 47px;
+}
+#number-panel .number-type {
+    color: #4a4a4a;
+    font-size: 32px;
+    font-weight: 300;
+    position: relative;
+    width: 100%;
+    direction: ltr;
+}
+
+@media (max-width: 340px) {
+    #number-panel .number-type {
+        font-size: 28px;
+    }
+}
+
+#number-panel .contact-number-type {
+    border-bottom: 1px solid #dfdfdf;
+    border-top: 1px solid #dfdfdf;
+    height: 69px;
+    padding-left 16px;
+}
+#number-panel .contact-number-type.open {
+    height: 69px;
+    padding-right: 0;
+}
+#number-panel .contact-number-type .more-conatcts {
+    display: none;
+}
+#number-panel .contact-number-type.open .more-conatcts {
+    display: block;
+}
+.contact-number-type .contact-item {
+    position: relative;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+}
+#number-panel .number-type .delete-number {
+    bottom: 0;
+    height: 100%;
+    left: auto;
+    margin: auto;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    width: 58px;
+}
+
+#number-panel .number-type .number {
+    display: inline-block;
+    overflow-x: scroll;
+    margin-right: 27px;
+    max-width: 240px;
+}
+
+.active-call {
+    color: #484848;
+    font-size: 16px;
+    font-weight: 600;
+    height: 46px !important;
+    line-height: 36px;
+    padding: 3px 18px !important;
+    position: relative;
+    cursor: pointer;
+}
+.active-call.list {
+    text-align: center;
+}
+.active-call.show {
+    background-color: #eaeaea;
+}
+.active-call.show:before {
+    background-image: url("../images/element/icon-next-arrow-gray.svg");
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 16px;
+    left: auto;
+    margin: auto;
+    position: absolute;
+    right: 16px;
+    top: 0;
+    width: 8px;
+}
+.active-call.list.show:before {
+    background-image: url("../images/element/icon-back.svg");
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 15px;
+    left: 16px;
+    margin: auto;
+    position: absolute;
+    right: auto;
+    top: 0;
+    width: 16px;
+}

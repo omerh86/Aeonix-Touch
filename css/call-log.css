@@ -1,0 +1,214 @@
+.call_log {
+    list-style-type: none;
+    padding: 0px 16px 0 16px;
+}
+
+.call_log_record {
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+.call_log_record .user_details {
+    position: relative;
+    list-style-type: none;
+    padding-left: 63px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    width: 100%;
+    flex-direction: row;
+    min-height: 43px;
+    box-sizing: border-box;
+}
+
+
+
+.call_log_record .user_details>li{
+    box-sizing: border-box;
+}
+
+.call_log_record .user_details .user_image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    border-color: rgb(0,58,79);
+    width: 40px;
+    height: 40px;
+    overflow:hidden;
+}
+
+.call_log_record .user_details .user_image>img {
+   width: 40px;
+   height: 40px;
+}
+
+.call_log_record .user_details .user_status {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    display: block;
+    top: 0px;
+    left: 0px;
+    background-repeat: no-repeat;
+    background-size: 17px 17px;
+}
+
+
+.call_log_record .user_details .user_status.available {
+    background-image: url("../images/states/icon-available.svg");
+}
+
+.call_log_record .user_details .user_status.on_call {
+    background-image: url("../images/states/icon-busy.svg");
+}
+
+.call_log_record .user_details .user_status.dnd {
+    background-image: url("../images/states/dnd.svg");
+}
+
+.call_log_record .user_details .user_status.offline {
+    background-image: url("../images/states/icon-logoff.svg");
+}
+
+.call_log_record .user_details .user_status.unknown {
+    background-image: url("../images/states/icon-uknown.svg");
+}
+
+
+.call_log_record .user_details .user_name {
+    font-size: 16px;
+    color: rgb(0,58,79);
+    order: 1;
+    width: 70%;
+    padding-left: 5px;
+}
+
+.call_log_record .user_details .call_date {
+    text-align: right;
+    font-size: 14px;
+    color: rgb(0,58,79);
+    order: 2;
+    width: 30%;
+
+
+}
+
+.call_log_record .user_details .call_time {
+    text-align: right;
+    font-size: 14px;
+    color: rgb(0,58,79);
+    order: 5;
+    margin-left: 3px;
+}
+
+
+.call_log_record .user_details .call_direction {
+    position: absolute;
+    top: 0px;
+    left: 45px;
+    width: 15px;
+    height: 15px;
+    background: transparent url("../img/icons/general_sprite.png") -203px  -155px no-repeat;
+}
+
+.call_log_record .user_details .call_direction.incoming{
+    background-position: -203px  -155px;
+}
+
+.call_log_record .user_details .call_direction.outgoing{
+    background-position: -232px -155px;
+}
+
+.call_log_record .user_details .call_direction.missed{
+    background-position: -261px -155px;
+}
+
+
+.call_log_record .user_details .number_of_calls {
+    order: 6;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 3px;
+    color: blue;
+}
+
+.call_log_record .user_details .user_type {
+    order: 3;
+    font-size: 14px;
+    flex-grow: 100;
+    padding-left: 5px;
+}
+
+
+
+.call_log_record .commands {
+    position: relative;
+    list-style-type: none;
+    padding-left: 0;
+    width: 100%;
+    margin-top: 7px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.call_log_record .commands>li {
+    margin-left: 14px;
+    box-sizing: border-box;
+}
+.call_log_record .commands .favorite {
+    width: 20px;
+    height: 20px;
+    align-self: center;
+}
+
+.call_log_record .commands .favorite>a{
+    display: inline-block;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: 100% 100%;
+}
+
+.call_log_record .commands .favorite>a.yes{
+    background-image: url("../images/element/icon-favorit-active.svg");
+}
+
+.call_log_record .commands .favorite>a.no{
+    background-image: url("../images/element/icon-favorit.svg");
+}
+
+.call_log_record .commands .make_call>a {
+    display:inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url("../images/buttons/icon-call.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.call_log_record .commands .chat>a {
+    display:inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: url("../images/buttons/icon-chat.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.call_log_record .commands .delete_record{
+    align-self: flex-end;
+}
+
+.call_log_record .commands .delete_record>a{
+    display:inline-block;
+    width: 22px;
+    height: 22px;
+    background-image: url("../images/element/trash.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}

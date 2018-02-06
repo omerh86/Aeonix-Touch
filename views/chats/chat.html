@@ -1,0 +1,68 @@
+<div class="intouch it-chat" ng-controller="chatController" ng-class="{'chat-edit':chat.isEditMode,'chat-search':chat.isSearchMode}">
+    <div id="chat-user-header">
+        <div class="navigation-menu" ng-click="goBack()">{{chat.isEditMode?"Edit":""}}</div>
+        <ul class="menu">
+            <li class="item-menu" ng-click="searchMode()" ng-if="!chat.isEditMode">
+                <a><i class="icon-chat icon-search"></i></a>
+            </li>
+            <li class="item-menu" ng-if="!chat.isSearchMode && !chat.isEditMode" ng-click="editMode()">
+                <a><i class="icon-chat icon-edit"></i></a>
+            </li>
+            <li class="item-menu" ng-if="chat.isEditMode" ng-click="deleteMessages()">
+                <a><i class="icon-chat icon-remove"></i></a>
+            </li>
+            <li class="item-menu" ng-if="chat.isEditMode" ng-click="selectAll()">
+                <a><i class="icon-chat icon-check" ng-class="{'check-all':chat.allSelected}"></i></a>
+            </li>
+        </ul>
+
+        <div class="chat-search-field" ng-show="chat.isSearchMode">
+            <input dir="auto" type="text" ng-model="chat.searchTerm"/>
+        </div>
+
+        <div class="item-contact" ng-if="!chat.isSearchMode && !chat.isEditMode">
+            <div class="contact">
+                <div class="user">
+                    <a class="user-avatar">
+                        <div class="user-avatar-img">
+                            <img src="" alt="" ng-src="{{chat.contact.internal.img}}"/>
+                        </div>
+                        <div class="block-prof-status status" ng-class="chat.contact|statusClassFromUser">
+                            <i class="icon-status" ng-class="chat.contact|statusClassFromUser"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="user-info">
+                    <div class="name-user">{{chat.contact| contactName}}</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="chat-messages" class="chat chat-window" scroll-to-bottom="messageList">
+        <div class="chat-messages-cluster" ng-class="{'transform':isChrome()}" ng-repeat="message in messageList">
+            <div ng-if="isAnotherDay($index)" class="chat-date">{{message.time|date:'dd-MM-yyyy'}}</div>
+            <div class="chat-message" ng-class="{'chat-me':!message.isOwnMessage,'chat-my':message.isOwnMessage}">
+                <div class="chat-selected-message" ng-if="chat.isEditMode">
+                    <input dir="auto" type="checkbox" name="user[]" ng-checked="message.selected" ng-click="selectMessage($event, message)" ng-dblclick="0"/>
+                    <span class="chat-message-check"></span>
+                </div>
+                <div class="text"
+                     ng-bind-html="message.messageText | highlightChat:chat.searchTerm">
+                </div>
+                <div class="send-time">{{message.time|date:'HH:mm'}}</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="chat-add-message" ng-show="!chat.isSearchMode && !chat.isEditMode">
+        <form>
+            <button class="icon-chat icon-send disabled" ng-click="sendMessage()"></button>
+            <div>
+                <textarea class="active" ng-model="chat.textTyped" placeholder="Type here your message"></textarea>
+            </div>
+        </form>
+    </div>
+</div>

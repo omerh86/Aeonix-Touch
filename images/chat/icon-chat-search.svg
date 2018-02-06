@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="102" height="102" viewBox="0 0 102 102">
+  <defs>
+    <style>
+
+      .cls-3 {
+        stroke: #ffffff;
+        stroke-linecap: round;
+        stroke-width: 2px;
+        fill: none;
+      }
+
+      .cls-5 {
+        fill: #ffffff;
+      }
+
+      .cls-6 {
+        stroke: #ffffff;
+        stroke-width: 2px;
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="idle">
+    <circle id="circle-1" class="cls-3" cx="51" cy="51" r="50"/>
+    <g id="glass">
+      <path d="M59.696,61.707 C60.651,60.752 62.200,60.752 63.155,61.707 C63.155,61.707 75.261,73.816 75.261,73.816 C76.216,74.771 76.216,76.320 75.261,77.275 C74.306,78.231 72.757,78.231 71.802,77.275 C71.802,77.275 59.696,65.167 59.696,65.167 C58.741,64.211 58.741,62.662 59.696,61.707 Z" id="path-1" class="cls-5" fill-rule="evenodd"/>
+      <circle id="circle-2" class="cls-6" cx="47" cy="46" r="21"/>
+    </g>
+  </g>
+</svg>

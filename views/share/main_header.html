@@ -1,0 +1,106 @@
+<div ng-controller="mainHeaderController">
+    <div id="header" ng-if="showHeader">
+        <div class="title">
+            <div class="back" ng-if="isBackShown" ng-click="goBack()"><a><i class="icon-head-back"></i></a></div>
+            <h2 ng-class="{'has-back':isBackShown}"><a><i class="intouch-icon min-logo icon-right"></i>Aeonix Touch</a></h2>
+        </div>
+        <div class="controls-profile" ng-init="isShowExplicitPresenceMenu=false" ng-click="isShowExplicitPresenceMenu=!isShowExplicitPresenceMenu">
+            <a class="profile">
+                <div class="block-prof-avatar">
+                    <img ng-show="user.image && user.image.length > 0" ng-src="{{user.image}}"/>
+                    <img ng-show="!user.image || user.image.length == 0" ng-src="img/user-placeholder.png"/>
+                </div>
+            </a>
+            <a class="profile">
+                <div class="block-prof-status">
+                    <i class="prof-status"
+                       ng-class="user.presence.combinedPresence.color">
+                    </i>
+                </div>
+            </a>
+            <div class="presence-selection-menu" ng-show="isShowExplicitPresenceMenu">
+                <ul>
+                    <li ng-repeat="type in presenceList"  ng-click="setUserPresence(type)">
+                        <div class="{{type.className}}">{{'messages.'+type.text|i18n}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="menu" class="head-menu" ng-if="showTabs">
+        <ul class="menu">
+            <li class="item-menu" ng-class="{active: isSettingsActive}">
+                <md-menu>
+                    <a  ng-click="showMenu($mdMenu,$event)">
+                        <i class="icon-menu icon-menu-element"></i>
+                    </a>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ng-click="showSettings()">
+                                Settings
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="changePassword()">
+                                Change Password
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="showAbout()">
+                                About
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-click="logout()">
+                                Logout
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </li>
+            <li class="item-menu" ng-class="{active: isDialPadActive}">
+                <a ui-sref="home.dialPad">
+                    <i class="icon-menu icon-keypad"></i>
+                </a>
+            </li>
+            <li class="item-menu" ng-class="{active: isContactsActive}">
+                <a ui-sref="home.favorites">
+                    <i class="icon-menu icon-contacts"></i>
+                    <span class="chat-messages-count" ng-if="missedCallsCounter.counter!=0">{{missedCallsCounter.counter}}</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a ng-click="callVoiceMail()">
+                    <i class="icon-menu icon-voice-mail"></i>
+                    <span class="chat-messages-count" ng-if="newVoiceMailCounter.counter!=0">{{newVoiceMailCounter.counter}}</span>
+                </a>
+            </li>
+            <li class="item-menu" ng-class="{active: isChatListActive}">
+                <a ui-sref="home.chatList" >
+                    <i class="icon-menu icon-chat"></i>
+                    <span class="chat-messages-count" ng-if="unseenMessagesCounter.counter!=0">{{unseenMessagesCounter.counter}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="call-queue-item" id="number-panel" ng-if="showCallQueueLink" ng-click="showCallQueue()">
+        <div ng-if="callQueue.length == 1" class="pause-call open">
+            <a>
+                <div >
+                    <div class="user">
+                        <div class="user-avatar-img">
+                            <img src="" ng-src="{{callQueue[0].contact.internal.img}}" alt=""/>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <div class="hold">{{callQueue[0].State|callState:call.ErrorReason|i18n}}</div>
+                        <div class="name-user">{{callQueue[0].contact|contactName:this}}</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div ng-if="callQueue.length > 1" class="active-call list">
+            {{callQueue.length}} Active Calls
+        </div>
+    </div>
+</div>

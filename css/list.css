@@ -1,0 +1,396 @@
+.contact-list .item-contact {
+    display: block;
+    float: left;
+    width: 100%;
+    direction: ltr;
+}
+
+.contact-list {
+    position: relative;
+    margin: 0;
+    background-color: white;
+}
+
+.it-contacts {
+    background-color: white;
+}
+
+.it-contacts .contact-list.list-search {
+    margin-top: 16px;
+}
+
+.contact-list .contact {
+    float: left;
+    position: relative;
+    width: 50%;
+}
+
+.contact-list .contact .user {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.contact-list .contact .user .bottom-arrow {
+    position: absolute;
+    top: 42px;
+    right: 12px;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 7px solid #949494;
+}
+
+@media (max-width: 340px) {
+    .contact-list .contact {
+        width: 54%;
+    }
+}
+
+#content .contact-list {
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#content .contact-list .item-contact {
+    padding: 6px 16px;
+}
+
+#content .contact-list .item-contact:focus,
+#content .contact-list .item-contact:active {
+    background: none repeat scroll 0 0 #f2f7f9;
+    cursor: pointer;
+}
+
+.user .user-avatar-img img {
+    max-width: 40px;
+    min-width: 40px;
+}
+
+.user .user-avatar-img {
+    border-radius: 50%;
+    height: 40px;
+    overflow: hidden;
+    width: 40px;
+}
+
+.contact .user {
+    float: left;
+    margin-right: 8px;
+    margin-left: 8px;
+    position: relative;
+}
+
+.contact .user-info {
+    padding: 6px 0;
+}
+
+.active-call-list .contact .user-info {
+    padding: 0;
+}
+
+.user-info .name-user {
+    color: #4a4a4a;
+    display: block;
+    font-size: 16px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.contact .user-info .server-user {
+    color: #979797;
+    display: block;
+    font-size: 15px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.contact .user-info .chat-last-message {
+    color: #979797;
+    display: block;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.contact .user-info .date {
+    color: #979797;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+}
+
+.user-info .number-user {
+    color: #4a4a4a;
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.user-info .hold,
+.user-info .call {
+    color: #4a4a4a;
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.user-info .hold i,
+.user-info .call i {
+    display: inline-block;
+    margin: 0 3px 0 0;
+}
+
+.active-call-list .hold,
+.active-call-list .call,
+.active-call-list .name-user,
+.active-call-list .server-user {
+    font-size: 12px !important;
+    line-height: 18px !important;
+}
+
+.user-info .call.active {
+    color: #36B42A;
+}
+
+.active-call-list .user-info .time {
+    color: #006892;
+    font-size: 12px !important;
+    font-weight: 500;
+    line-height: 16px !important;
+    margin-left: 5px;
+}
+
+.contact-list .action-contact {
+    float: left;
+    padding: 11px 0;
+    text-align: right;
+    width: 48%;
+    position: relative;
+}
+
+@media (max-width: 340px) {
+    .contact-list .action-contact {
+        width: 45%;
+    }
+}
+
+.contact-list .action-contact a {
+    display: inline-block;
+    margin-right: 14px;
+    vertical-align: middle;
+}
+
+.contact-list .action-contact a.count {
+    position: relative;
+}
+
+.contact-list .action-contact a:last-child {
+    margin: 0;
+}
+
+/* Keypad contact-item */
+.contact-number-type.open {
+    border-top: 1px solid #dfdfdf;
+    padding: 5px 0px;
+    min-height: 60px;
+}
+
+.contact-number-type.open .contact-item .contact {
+    display: block;
+    /* float: left; */
+    /* width: 80%; */
+    position: relative;
+    flex: 1;
+}
+
+.contact-number-type .contact-item .contact {
+    width: 100%;
+}
+
+.contact-item .contact .action-contact {
+    bottom: 0;
+    height: 22px;
+    left: auto;
+    margin: auto;
+    position: absolute;
+    right: 3px;
+    top: 0;
+    width: 22px;
+}
+
+.contact-item .contact .user-info {
+    padding-right: 23px;
+}
+
+.contact-item .more-conatcts {
+    color: #023a50;
+    display: block;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0px;
+    text-align: center;
+    width: 68px;
+    padding-top: 4px;
+    cursor: pointer;
+}
+
+.contact-item .more-conatcts a {
+    color: #023a50;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.contact-item .more-conatcts::before {
+    border-left: 1px solid #dfdfdf;
+    content: "";
+    display: block;
+    height: 60px;
+    left: 82%;
+    position: absolute;
+    top: -6px;
+    width: 1px;
+}
+
+.contact-item .more-conatcts::after {
+    background-image: url("../images/element/icon-arrow-down.svg");
+    background-repeat: no-repeat;
+    content: "";
+    display: block;
+    height: 8px;
+    margin: 6px auto 0;
+    width: 12px;
+    background-size: contain !important;
+}
+
+.contact-item .more-conatcts.single::after {
+    background: none;
+}
+
+span.phone {
+    color: #01688f;
+}
+
+/* pause-call */
+.pause-call.open {
+    background: none repeat scroll 0 0 #eaeaea;
+    height: 46px !important;
+    padding: 3px 16px !important;
+}
+
+.pause-call .user .user-avatar-img {
+    border-radius: 50%;
+    height: 40px;
+    overflow: hidden;
+    width: 40px;
+    float: left;
+}
+
+.pause-call .user .user-avatar-img img {
+    max-width: 40px;
+    min-width: 40px;
+}
+
+.pause-call .contact .user-info {
+    padding: 0 !important;
+}
+
+.pause-call .user-info .name-user {
+    font-weight: 300;
+}
+
+.pause-call > a {
+    position: relative;
+    display: block;
+}
+
+.call-queue-item {
+    position: relative;
+}
+
+
+
+.contact.one,
+.contact.two {
+    display: block;
+    width: 50%;
+}
+
+.contact.one {
+    float: left;
+}
+
+.contact.two {
+    float: right;
+}
+
+.contact.one .user,
+.contact.two .user {
+    position: relative;
+    width: 113px;
+    margin: 0 auto !important;
+    display: block;
+}
+
+.contact .end-three-way-call {
+    position: absolute;
+    top: -8px;
+}
+
+.contact.one .end-three-way-call {
+    left: -16px;
+}
+
+.contact.two .end-three-way-call {
+    right: -16px;
+}
+
+/* Group radio */
+.group-radio ul li {
+    display: block;
+    height: 22px;
+    margin: 0 0 16px;
+    padding: 0 16px;
+    width: 100%;
+}
+
+.group-radio ul {
+    display: block;
+    margin-bottom: 33px;
+}
+
+.group-radio ul li label {
+    position: relative;
+}
+
+.group-radio ul li label span {
+    color: #4a4a4a;
+    font-size: 16px;
+}
+
+.scrollme {
+ max-height: 100%; /* 300px; */
+}

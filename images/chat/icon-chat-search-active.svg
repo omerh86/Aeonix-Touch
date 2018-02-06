@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <style>
+
+      .cls-3 {
+        fill: #00688f;
+      }
+
+      .cls-5 {
+        fill: #ffffff;
+      }
+
+      .cls-6 {
+        stroke: #ffffff;
+        stroke-width: 2px;
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="pressed">
+    <circle id="circle-1" class="cls-3" cx="50" cy="50" r="50"/>
+    <g id="glass">
+      <path d="M59.696,60.707 C60.651,59.752 62.200,59.752 63.155,60.707 C63.155,60.707 75.261,72.816 75.261,72.816 C76.216,73.771 76.216,75.320 75.261,76.275 C74.306,77.231 72.757,77.231 71.802,76.275 C71.802,76.275 59.696,64.167 59.696,64.167 C58.741,63.211 58.741,61.662 59.696,60.707 Z" id="path-1" class="cls-5" fill-rule="evenodd"/>
+      <circle id="circle-2" class="cls-6" cx="46" cy="46" r="21"/>
+    </g>
+  </g>
+</svg>

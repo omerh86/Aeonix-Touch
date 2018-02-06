@@ -1,0 +1,113 @@
+<div id="content" class="intouch it-call" ng-controller="callController" mobile-height>
+    <div class="calling-container">
+        <div class="contacts-box">
+            <div class="contact">
+                <div class="user">
+                    <a class="user-avatar">
+                        <div class="user-avatar-img">
+                            <img ng-src="{{primaryCall.contact.internal.img}}" class="img-circle"
+                                 alt="">
+                        </div>
+                    </a>
+                </div>
+                <div class="user-info">
+                    <div class="name-user">{{primaryCall.contact|contactName}}</div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="primaryCall.State!=eCallState.Active && primaryCall.State!=eCallState.Hold"
+             ng-class="primaryCall.State|callingProgressStatusClass">
+            <i class="icon-sc icon-incoming-call"></i>
+            <div class="calling">
+                <i class="icon-elem icon-calling-indicator"></i>
+                <span>{{primaryCall.State | callState:primaryCall.ErrorReason | i18n}}</span>
+            </div>
+        </div>
+        <div ng-if="primaryCall.callStartTime" intouch-timer start="primaryCall.callStartTime"
+             encrypted="primaryCall.IsEncrypted" class="start-timer call-duration"></div>
+        <div ng-if="primaryCall.holdStartTime" intouch-timer start="primaryCall.holdStartTime"
+             encrypted="primaryCall.IsEncrypted" class="start-timer call-duration hold"></div>
+
+        <div class="calling-action">
+            <a ng-if="primaryCall.State|callFunctionAvailable:'answer_audio'"
+               ng-click="answerCall(primaryCall)"><i class="icon-btn icon-call"></i></a>
+            <a ng-if="primaryCall.State|callFunctionAvailable:'divert_in'"><i
+                    ng-click="divertToVM(primaryCall)" class="icon-btn icon-divert"></i></a>
+            <a ng-if="primaryCall.State|callFunctionAvailable:'refuse_in'"
+               ng-click="terminateCall(primaryCall)"><i class="icon-btn icon-end-call"></i></a>
+            <a ng-if="primaryCall.State|callFunctionAvailable:'addCall'" ng-click="addCall()">
+                <i class="icon-btn icon-more"></i>
+            </a>
+            <a ng-if="primaryCall.State|callFunctionAvailable:'endCall'"
+               ng-click="terminateCall(primaryCall)"><i class="icon-btn icon-end-call"></i></a>
+            <a ng-if="primaryCall.State|callFunctionAvailable:'pause'"
+               ng-class="{active: primaryCall.State == eCallState.Hold}"
+               ng-click="toggleHold(primaryCall)"><i class="icon-btn icon-hold"></i></a>
+            <a ng-if="primaryCall.State|callFunctionAvailable:'chat'"
+               ng-click="chatWithContact(primaryCall.contact)"><i
+                    class="icon-btn icon-chat"></i></a>
+            <a ng-if="primaryCall.State|callFunctionAvailable:'mute'"
+               ng-class="{active: primaryCall.isMuted}" ng-click="toggleMute(primaryCall)"><i
+                    class="icon-btn icon-mute"></i></a>
+            <a ng-if="primaryCall.State|callFunctionAvailable:'bluetooth'"><i
+                    class="icon-btn icon-bluetooth"></i></a>
+            <a ng-if="primaryCall.State|callFunctionAvailable:'speaker'"
+               ng-class="{active: isSpeakerOn}" ng-click="toggleSpeaker()"><i
+                    class="icon-btn icon-speaker"></i></a>
+            <a ng-if="transferEnabled && transferCandidates.length==1" ng-click="transferTo(transferCandidates[0])">
+                <i class="icon-btn icon-transfer-call"></i>
+            </a>
+            <md-menu ng-if="transferEnabled && transferCandidates.length>1">
+                <a  ng-click="onOpenMenu($mdMenu,$event)">
+                    <i class="icon-btn icon-transfer-call"></i>
+                </a>
+                <md-menu-content width="4">
+                    <md-menu-item ng-repeat="call in transferCandidates">
+                        <div class="item-contact">
+                            <div class="contact" ng-click="transferTo(call)">
+                                <div class="user">
+                                    <a class="user-avatar">
+                                        <div class="user-avatar-img">
+                                            <img src="" ng-src="{{call.contact.internal.img}}" alt=""/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="user-info">
+                                    <div class="name-user">{{call|contactName}}</div>
+                                    <div class="server-user" >{{call|contactDescription:this}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+            <a ng-if="conferenceEnabled && conferenceCandidates.length==1" ng-click="conferenceWith(conferenceCandidates[0])">
+                <i class="icon-btn icon-conference-call"></i>
+            </a>
+            <md-menu ng-if="conferenceEnabled && conferenceCandidates.length>1">
+                <a  ng-click="onOpenMenu($mdMenu,$event)">
+                    <i class="icon-btn icon-conference-call"></i>
+                </a>
+                <md-menu-content width="4">
+                    <md-menu-item ng-repeat="call in conferenceCandidates">
+                        <div class="item-contact">
+                            <div class="contact" ng-click="conferenceWith(call)">
+                                <div class="user">
+                                    <a class="user-avatar">
+                                        <div class="user-avatar-img">
+                                            <img src="" ng-src="{{call.contact.internal.img}}" alt=""/>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="user-info">
+                                    <div class="name-user">{{call|contactName}}</div>
+                                    <div class="server-user" >{{call|contactDescription:this}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </div>
+</div>

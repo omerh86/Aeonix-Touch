@@ -1,0 +1,30 @@
+<div id="content" class="intouch it-call contact-list" ng-controller="dialPadListController" mobile-height>
+    <div class="item-contact" ng-repeat="contact in keypadList">
+        <div class="contact" ng-click="onContactSelected(contact)">
+            <div class="user">
+                <a class="user-avatar">
+                    <div class="user-avatar-img">
+                        <img src="" ng-src="{{contact.internal.img}}" alt=""/>
+                    </div>
+                    <div class="block-prof-status">
+                        <i class="icon-status" ng-class="contact|statusClassFromUser"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="user-info">
+                <div class="name-user">{{contact|contactName:this}}</div>
+            </div>
+        </div>
+        <div class="action-contact">
+            <a ng-class="{active: contact.internal.isFav};"
+               ng-if="contact|showFavorite"
+               ng-click="toggleFavorite($event, contact, contact.internal.isFav)">
+                <i class="icon-elem icon-favorit"></i>
+            </a>
+            <a><i class="icon-btn-contact icon-call"
+                  ng-click="makeCallToContact(contact, false)"></i></a>
+            <a><i ng-click="chatWithContact(contact)"
+                  class="icon-btn-contact icon-chat"></i></a>
+        </div>
+    </div>
+</div>

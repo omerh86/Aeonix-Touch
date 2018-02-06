@@ -1,0 +1,24 @@
+<div id="content" ng-controller="callQueueController" class="intouch it-call" mobile-height>
+    <div class="contact-list active-call-list">
+        <div class="item-contact" ng-repeat="call in queueList">
+            <div class="contact" ng-click="showCall(call)">
+                 <div class="user">
+                     <a class="user-avatar">
+                         <div class="user-avatar-img">
+                             <img src="" ng-src="{{call.contact.internal.img}}" alt=""/>
+                         </div>
+                         <div class="block-prof-status">
+                             <i class="icon-status icon-available"></i>
+                         </div>
+                     </a>
+                 </div>
+                 <div class="user-info">
+                     <div class="call">{{call.State|callState:call.ErrorReason|i18n}}</div>
+                     <div class="name-user">{{call.contact|contactName:this}}</div>
+                     <!--todo michae: change style type-->
+                     <div class="server-user">{{call.contact|contactDescription:this}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

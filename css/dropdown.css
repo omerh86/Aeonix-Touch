@@ -1,0 +1,98 @@
+.active .dropdown-menu {
+    display: block;
+}
+.dropdown-menu {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid #979797;
+    border-radius: 2px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    font-size: 6px;
+    left: -12px;
+    list-style: outside none none;
+    margin: 8px 0 13px;
+    min-width: 131px;
+    padding: 0;
+    position: absolute;
+    text-align: left;
+    bottom: 100%;
+    z-index: 1000;
+}
+.dropdown-menu > li {
+    border-bottom: 1px solid #979797;
+    position: relative;
+}
+.dropdown-menu > li > span {
+    clear: both;
+    color: #4a4a4a;
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 19px;
+    padding: 15px 11px;
+    white-space: nowrap;
+}
+.dropdown .dropdown-menu > li:last-child span:before,
+.dropdown .dropdown-menu > li:last-child span:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: 11px solid transparent;
+    border-top: 11px solid #979797;
+    z-index: 100;
+    position: absolute;
+    top: 101%;
+    left: 20%;
+}
+.dropdown .dropdown-menu > li:last-child span:after {
+    border-top: 11px solid #fff;
+    top: 98%;
+}
+
+.dropdown .dropdown-menu > li:last-child span:active:after,
+.dropdown .dropdown-menu > li:last-child span.is-active:after {
+    border-top: 11px solid #00688f;
+}
+
+.dropdown-menu > li > span:active,
+.dropdown-menu > li > span.is-active {
+    background-color: #00688f;
+    text-decoration: none;
+    color: #FFF;
+}
+
+/* contact-details dropdown-menu */
+.contact-details .contact-action .dropdown-menu {
+    bottom: auto;
+    top: 55px;
+}
+.contact-details .contact-action .dropdown .dropdown-menu > li:last-child span:before,
+.contact-details .contact-action .dropdown .dropdown-menu > li:last-child span:after {
+    display: none;
+}
+.contact-details .contact-action .dropdown .dropdown-menu > li:first-child span:before,
+.contact-details .contact-action .dropdown .dropdown-menu > li:first-child span:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: 11px solid transparent;
+    border-bottom: 11px solid #979797;
+    z-index: 100;
+    position: absolute;
+    bottom: 101%;
+    left: 40%;
+}
+.contact-details .contact-action .dropdown .dropdown-menu > li:first-child span:after {
+    border-bottom: 11px solid #fff;
+    bottom: 99%;
+}
+.contact-details .contact-action .dropdown .dropdown-menu > li:first-child span:active:after {
+    border-bottom: 11px solid #f2f7f9;
+}
+.contact-details .contact-action .dropdown .dropdown-menu > li:first-child span:active:after,
+.contact-details .contact-action .dropdown .dropdown-menu > li:first-child span.is-active:after {
+    border-bottom: 11px solid #00688f;
+}

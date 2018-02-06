@@ -1,0 +1,854 @@
+.icon-right {
+    margin-right: 3px;
+}
+
+.intouch-icon {
+    display: inline-block;
+}
+
+.intouch-icon.min-logo {
+    background: url("../images/icon-logotip.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 16px;
+    width: 16px;
+    background-size: contain !important;
+}
+
+.intouch-icon.close-error {
+    background: url("../images/close-error.svg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 16px;
+    width: 16px;
+    background-size: contain !important;
+}
+
+.icon-alert.close-error {
+    background: url("../images/alert-close-error.svg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 20px;
+    width: 20px;
+    display: block;
+    background-size: contain !important;
+}
+
+.icon-alert.close-error-active, .icon-alert.close-error:active, .active .icon-alert.close-error {
+    background: url("../images/alert-close-error-active.svg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 20px;
+    width: 20px;
+    display: block;
+    background-size: contain !important;
+}
+
+.remember-me-sprite {
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    display: block;
+    width: 17px;
+    height: 13px;
+}
+
+.remember-me {
+    background: url("../images/remember-me/icon-box.svg");
+}
+
+.remember-me-checked {
+    background: url("../images/remember-me/icon-box-check.svg");
+}
+
+/* Status */
+.icon-status {
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    display: block;
+    width: 17px;
+    height: 17px;
+}
+
+.icon-status.green {
+    background: url("../images/states/icon-available.svg");
+}
+
+.icon-status.yellow {
+    background: url("../images/states/inMeeting.svg");
+}
+
+.icon-status.orange {
+     background: url("../images/states/inMeeting.svg");
+}
+
+.icon-status.red {
+    background: url("../images/states/icon-busy.svg");
+}
+.icon-status.purple {
+    background: url("../images/states/dnd.svg");
+}
+.icon-status.gray {
+    background: url("../images/states/icon-uknown.svg");
+}
+.icon-status.blue {
+    background: url("../images/states/icon-logoff.svg");
+}
+
+
+/* Head Menu*/
+.icon-menu {
+    background-size: 100% auto !important;
+    background-color: paleturquoise;
+    background-repeat: no-repeat !important;
+    display: block;
+}
+
+.icon-menu.icon-chat {
+    width: 54px;
+    height: 38px;
+    background: url("../images/head-menu/icon-chat.svg");
+}
+
+.icon-menu.icon-chat-active, .icon-menu.icon-chat:active, .active .icon-menu.icon-chat {
+    width: 55px;
+    height: 38px;
+    background: url("../images/head-menu/icon-chat-active.svg");
+}
+
+.icon-menu.icon-contacts {
+    width: 34px;
+    height: 39px;
+    background: url("../images/head-menu/icon-contacts.svg");
+}
+
+.icon-menu.icon-contacts-active, .icon-menu.icon-contacts:active, .active .icon-menu.icon-contacts {
+    width: 34px;
+    height: 39px;
+    background: url("../images/head-menu/icon-contacts-active.svg");
+}
+
+.icon-menu.icon-keypad {
+    width: 28px;
+    height: 39px;
+    background: url("../images/head-menu/icon-keypad.svg");
+}
+
+.icon-menu.icon-keypad-active, .icon-menu.icon-keypad:active, .active .icon-menu.icon-keypad {
+    width: 28px;
+    height: 39px;
+    background: url("../images/head-menu/icon-keypad-active.svg");
+}
+
+.icon-menu.icon-menu-element {
+    width: 32px;
+    height: 27px;
+    background: url("../images/head-menu/icon-menu.svg");
+}
+
+.icon-menu.icon-menu-element-active, .icon-menu.icon-menu-element:active, .active .icon-menu.icon-menu-element {
+    width: 32px;
+    height: 27px;
+    background: url("../images/head-menu/icon-menu-active.svg");
+}
+
+.icon-menu.icon-voice-mail {
+    width: 49px;
+    height: 38px;
+    background: url("../images/head-menu/icon-voice-mail.svg");
+}
+
+.icon-menu.icon-voice-mail-active, .icon-menu.icon-voice-mail:active {
+    width: 49px;
+    height: 38px;
+    background: url("../images/head-menu/icon-voice-mail-active.svg");
+}
+
+/* Element base */
+.icon-elem {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    display: block;
+}
+
+.icon-elem.icon-alert-red {
+    width: 20px;
+    height: 17px;
+    background: url("../images/element/icon-alert-red.svg");
+}
+
+.icon-elem.icon-alert-white {
+    width: 20px;
+    height: 17px;
+    background: url("../images/element/icon-alert-white.svg");
+}
+
+.icon-elem.icon-arrow-down {
+    width: 16px;
+    height: 26px;
+    background: url("../images/element/icon-arrow-down.svg");
+}
+
+.icon-elem.icon-call-phone {
+    width: 17px;
+    height: 17px;
+    background: url("../images/element/icon-call-phone.svg");
+}
+
+.icon-elem.icon-calling-indicator {
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-size: auto 100% !important;
+    background-image: url("../images/element/icon-call-phone.svg");
+}
+
+.icon-elem.icon-camp-on-indicator {
+    width: 15px;
+    height: 15px;
+    background: url("../images/element/icon-camp-on-indicator.svg");
+}
+
+.icon-elem.icon-clear-all-search {
+    width: 16px;
+    height: 16px;
+    background: url("../images/element/icon-clear-all-search.svg");
+}
+
+.icon-elem.icon-clear-all-search-active, .icon-elem.icon-clear-all-search:active, .active .icon-elem.icon-clear-all-search {
+    width: 16px;
+    height: 16px;
+    background: url("../images/element/icon-clear-all-search-active.svg");
+}
+
+.active .icon-elem.icon-delete-disabled:active, .active .icon-elem.icon-delete-disabled {
+    width: 25px;
+    height: 19px;
+    background: url("../images/element/icon-delete-active.svg");
+}
+
+.icon-elem.icon-delete-disabled {
+    width: 25px;
+    height: 19px;
+    background: url("../images/element/icon-delete-disabled.svg");
+}
+
+.icon-elem.icon-favorit {
+    width: 22px;
+    height: 22px;
+    background: url("../images/element/icon-favorit.svg");
+}
+
+.icon-elem.icon-trash {
+    width: 22px;
+    height: 22px;
+    float: right;
+    margin-top: 15px;
+    background: url("../images/element/trash.png");
+}
+
+@media (max-width: 340px) {
+    .icon-elem.icon-favorit {
+        width: 20px;
+        height: 20px;
+        background: url("../images/element/icon-favorit.svg");
+    }
+}
+
+.icon-elem.icon-favorit:active, .active .icon-elem.icon-favorit {
+    background: url("../images/element/icon-favorit-active.svg");
+}
+
+.icon-elem.icon-hold {
+    width: 12px;
+    height: 14px;
+    background: url("../images/element/icon-hold.svg");
+}
+
+.icon-elem.icon-hold-indicator {
+    width: 8px;
+    height: 9px;
+    background: url("../images/element/icon-hold-indicator.svg");
+}
+
+.icon-elem.icon-incall-indicator {
+    width: 11px;
+    height: 11px;
+    background: url("../images/element/icon-incall-indicator.svg");
+}
+
+.icon-elem.icon-next-arrow-blue {
+    width: 8px;
+    height: 14px;
+    background: url("../images/element/icon-next-arrow-blue.svg");
+}
+
+.icon-elem.icon-next-arrow-gray {
+    width: 8px;
+    height: 16px;
+    background: url("../images/element/icon-next-arrow-gray.svg");
+}
+
+.icon-elem.icon-prioritet-p1 {
+    width: 22px;
+    height: 22px;
+    background: url("../images/element/icon-prioritet-p1.svg");
+}
+
+.icon-elem.icon-prioritet-p2 {
+    width: 22px;
+    height: 22px;
+    background: url("../images/element/icon-prioritet-p2.svg");
+}
+
+.icon-elem.icon-prioritet-p3 {
+    width: 22px;
+    height: 22px;
+    background: url("../images/element/icon-prioritet-p3.svg");
+}
+
+.icon-elem.icon-search {
+    width: 16px;
+    height: 16px;
+    background: url("../images/element/icon-search.svg");
+}
+
+.icon-elem.icon-search-active, .icon-elem.icon-search:active, .active .icon-elem.icon-search {
+    width: 16px;
+    height: 16px;
+    background: url("../images/element/icon-search-active.svg");
+}
+
+.icon-elem.icon-secure-call-green {
+    width: 37px;
+    height: 34px;
+    background: url("../images/element/icon-secure-call-green.svg");
+}
+
+.icon-elem.icon-secure-call-white {
+    width: 37px;
+    height: 34px;
+    background: url("../images/element/icon-secure-call-white.svg");
+}
+
+.icon-elem.icon-back {
+    width: 16px;
+    height: 15px;
+    background: url("../images/element/icon-back.svg");
+}
+
+/* Profile status */
+.prof-status {
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    display: block;
+    width: 14px;
+    height: 14px;
+}
+
+.prof-status.green {
+    background: url("../images/states/icon-available.svg");
+}
+.prof-status.yellow {
+     background: url("../images/states/inMeeting.svg");
+}
+
+.prof-status.orange {
+background: url("../images/states/icon-busy.svg");
+
+}
+.prof-status.red {
+    background: url("../images/states/icon-busy.svg");
+}
+
+.prof-status.purple {
+    background: url("../images/states/dnd.svg");
+}
+
+.prof-status.gray {
+    background: url("../images/states/icon-uknown.svg");
+}
+.prof-status.blue {
+    background: url("../images/states/icon-logoff.svg");
+}
+
+
+/* Buttons */
+.icon-btn {
+    background-repeat: no-repeat;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-size: contain !important;
+}
+
+@media (max-width: 340px) {
+    .icon-btn {
+        background-repeat: no-repeat;
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-size: contain !important;
+    }
+}
+
+.icon-btn.icon-bluetooth {
+    background-image: url("../images/buttons/icon-bluetooth.svg");
+}
+
+.icon-btn.icon-bluetooth-active, .icon-btn.icon-bluetooth:active, .active .icon-btn.icon-bluetooth {
+    background-image: url("../images/buttons/icon-bluetooth-active.svg");
+}
+
+.icon-btn.icon-call {
+    background-image: url("../images/buttons/icon-call.svg");
+}
+
+.icon-btn.icon-call-gray {
+    background-image: url("../images/buttons/icon-call.svg");
+}
+
+.icon-btn.icon-call-active, .icon-btn.icon-call:active, .active .icon-btn.icon-call, .icon-btn.icon-call-gray:active, .active .icon-btn.icon-call-gray {
+    background-image: url("../images/buttons/icon-call-active.svg");
+}
+
+.icon-btn.icon-camp-on {
+    background-image: url("../images/buttons/icon-camp-on.svg");
+}
+
+.icon-btn.icon-camp-on-active, .icon-btn.icon-camp-on:active, .active .icon-btn.icon-camp-on {
+    background-image: url("../images/buttons/icon-camp-on-active.svg");
+}
+
+.icon-btn.icon-chat {
+    background-image: url("../images/buttons/icon-chat.svg");
+}
+
+.icon-btn.icon-chat-active, .icon-btn.icon-chat:active, .active .icon-btn.icon-chat {
+    background-image: url("../images/buttons/icon-chat-active.svg");
+}
+
+.icon-btn.icon-divert {
+    background-image: url("../images/buttons/icon-divert.svg");
+}
+
+.icon-btn.icon-divert-active, .icon-btn.icon-divert:active, .active .icon-btn.icon-divert {
+    background-image: url("../images/buttons/icon-divert-active.svg");
+}
+
+.icon-btn.icon-end-call {
+    background-image: url("../images/buttons/icon-end-call.svg");
+}
+
+.icon-btn.icon-end-call-active, .icon-btn.icon-end-call:active, .active .icon-btn.icon-end-call {
+    background-image: url("../images/buttons/icon-end-call-active.svg");
+}
+
+.icon-btn.icon-hold {
+    background-image: url("../images/buttons/icon-hold.svg");
+}
+
+.icon-btn.icon-hold:active, .active .icon-btn.icon-hold {
+    background-image: url("../images/buttons/icon-hold-active.svg");
+}
+
+.icon-btn.icon-more {
+    background-image: url("../images/buttons/icon-more.svg");
+}
+
+.icon-btn.icon-more-active, .icon-btn.icon-more:active, .active .icon-btn.icon-more {
+    background-image: url("../images/buttons/icon-more-active.svg");
+}
+
+.icon-btn.icon-mute {
+    background-image: url("../images/buttons/icon-mute.svg");
+}
+
+.icon-btn.icon-mute-active, .icon-btn.icon-mute:active, .active .icon-btn.icon-mute {
+    background-image: url("../images/buttons/icon-mute-active.svg");
+}
+
+.icon-btn.icon-speaker {
+    background-image: url("../images/buttons/icon-speaker.svg");
+}
+
+.icon-btn.icon-speaker-active, .icon-btn.icon-speaker:active, .active .icon-btn.icon-speaker {
+    background-image: url("../images/buttons/icon-speaker-active.svg");
+}
+
+.icon-btn.icon-keypad-call {
+    background-image: url("../images/buttons/icon-keypad.png");
+}
+
+.icon-btn.icon-menu-call {
+    background-image: url("../images/buttons/icon-menu.png");
+}
+
+.icon-btn.icon-transfer-call {
+    background-image: url("../images/buttons/icon-transfer-call.svg");
+}
+
+.icon-btn.icon-conference-call {
+    background-image: url("../images/buttons/icon-conference-call.png");
+}
+
+.icon-btn.icon-transfer-call-active, .icon-btn.icon-transfer-call:active, .active .icon-btn.icon-transfer-call {
+    background-image: url("../images/buttons/icon-transfer-call-active.svg");
+}
+
+.icon-btn.icon-video {
+    background-image: url("../images/buttons/icon-video.svg");
+}
+
+.icon-btn.icon-video-active, .icon-btn.icon-video:active, .active .icon-btn.icon-video {
+    background-image: url("../images/buttons/icon-video-active.svg");
+}
+
+.icon-btn.icon-video-call {
+    background-image: url("../images/buttons/icon-video-call.svg");
+}
+
+.icon-btn.icon-video-call-gray {
+    background-image: url("../images/buttons/icon-video-call.svg");
+}
+
+.icon-btn.icon-video-call-active, .icon-btn.icon-video-call:active, .active .icon-btn.icon-video-call, .icon-btn.icon-video-call-gray:active, .active .icon-btn.icon-video-call-gray {
+    background-image: url("../images/buttons/icon-video-call-active.svg");
+}
+
+.icon-btn-endcall-primary {
+   background-repeat: no-repeat;
+   display: block;
+   width: 36px;
+   height: 36px;
+   background-size: contain !important;
+   top: 0px;
+   left: -15px;
+   position: absolute;
+   content: url("../images/buttons/icon-end-call-active.svg");
+}
+
+.icon-btn-endcall-secondary{
+   background-repeat: no-repeat;
+   display: block;
+   width: 36px;
+   height: 36px;
+   background-size: contain !important;
+   top: 0px;
+   right: -15px;
+   position: absolute;
+   content: url("../images/buttons/icon-end-call-active.svg");
+}
+
+
+/* Contact options */
+.icon-btn-contact {
+    background-repeat: no-repeat;
+    display: block;
+    background-size: contain !important;
+}
+
+
+.icon-btn-contact.icon-call {
+    width: 36px;
+    height: 36px;
+    background-image: url("../images/buttons/icon-call.svg");
+}
+
+.icon-btn-contact.icon-call:active, .active .icon-btn-contact.icon-call {
+    background-image: url("../images/buttons/icon-call-active.svg");
+}
+
+@media (max-width: 340px) {
+    .icon-btn-contact.icon-call {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+.icon-btn-contact.icon-chat {
+    width: 36px;
+    height: 36px;
+    background-image: url("../images/buttons/icon-chat.svg");
+}
+
+@media (max-width: 340px) {
+    .icon-btn-contact.icon-chat {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+.icon-btn-contact.icon-chat:active, .active .icon-btn-contact.icon-chat {
+    background-image: url("../images/buttons/icon-chat-active.svg");
+}
+
+.icon-btn-contact.icon-end-call {
+    width: 36px;
+    height: 36px;
+    background-image: url("../images/buttons/icon-end-call.svg");
+}
+
+.icon-btn-contact.icon-end-call:active, .active .icon-btn-contact.icon-end-call {
+    background-image: url("../images/buttons/icon-end-call-active.svg");
+}
+
+.icon-btn-contact.icon-end-three-way-call {
+    width: 42px;
+    height: 42px;
+    background-position: -15px -855px;
+}
+
+.icon-btn-contact.icon-end-three-way-call-active, .icon-btn-contact.icon-end-three-way-call:active, .active .icon-btn-contact.icon-end-three-way-call {
+    width: 42px;
+    height: 42px;
+    background-position: -15px -1013px;
+}
+
+.icon-btn-contact.icon-hold {
+    width: 36px;
+    height: 36px;
+    background-image: url("../images/buttons/icon-hold.svg");
+}
+
+.active .icon-btn-contact.icon-hold, .icon-btn-contact.icon-hold:active {
+    width: 36px;
+    height: 36px;
+    background-image: url("../images/buttons/icon-hold-active.svg");
+}
+
+/* Status calling */
+.icon-sc {
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    display: block;
+    width: 86px;
+    height: 40px;
+}
+
+.icon-sc.icon-calling {
+    background-image: url("../images/calling-status/icon-calling.png");
+}
+
+.icon-sc.icon-incoming-call {
+    background-image: url("../images/calling-status/icon-incoming-call.png");
+}
+
+.icon-outgoing-call-arrow,
+.icon-incoming-call-arrow {
+    display: inline-block;
+    background: transparent url(../img/icons/general_sprite.png) -203px -155px no-repeat;
+    width: 15px;
+    height: 15px;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
+.icon-outgoing-call-arrow {
+    background-position: -232px -155px;
+}
+
+.icon-incoming-call-arrow.missed {
+    background-position: -261px -155px;
+}
+
+/* Video button */
+.icon-btn-video {
+    background-repeat: no-repeat;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-size: contain !important;
+}
+
+.icon-btn-video.icon-bluetooth {
+    background-image: url("../images/video-button/icon-bluetooth.svg");
+}
+
+.icon-btn-video.icon-bluetooth-active, .icon-btn-video.icon-bluetooth:active, .active .icon-btn-video.icon-bluetooth {
+    background-image: url("../images/video-button/icon-bluetooth-active.svg");
+}
+
+.icon-btn-video.icon-chat {
+    background-image: url("../images/video-button/icon-chat.svg");
+}
+
+.icon-btn-video.icon-chat-active, .icon-btn-video.icon-chat:active, .active .icon-btn-video.icon-chat {
+    background-image: url("../images/video-button/icon-chat-active.svg");
+}
+
+.icon-btn-video.icon-end-call {
+    background-image: url("../images/video-button/icon-end-call.svg");
+}
+
+.icon-btn-video.icon-end-call-active, .icon-btn-video.icon-end-call:active, .active .icon-btn-video.icon-end-call {
+    background-image: url("../images/video-button/icon-end-call-active.svg");
+}
+
+.icon-btn-video.icon-hold {
+    background-image: url("../images/video-button/icon-hold.svg");
+}
+
+.icon-btn-video.icon-hold-active, .icon-btn-video.icon-hold:active, .active .icon-btn-video.icon-hold {
+    background-image: url("../images/video-button/icon-hold-active.svg");
+}
+
+.icon-btn-video.icon-more {
+    background-image: url("../images/video-button/icon-more.svg");
+}
+
+.icon-btn-video.icon-more-active, .icon-btn-video.icon-more:active, .active .icon-btn-video.icon-more {
+    background-image: url("../images/video-button/icon-more-active.svg");
+}
+
+.icon-btn-video.icon-mute {
+    background-image: url("../images/video-button/icon-mute.svg");
+}
+
+.icon-btn-video.icon-mute-active, .icon-btn-video.icon-mute:active, .active .icon-btn-video.icon-mute {
+    background-image: url("../images/video-button/icon-mute-active.svg");
+}
+
+.icon-btn-video.icon-speaker {
+    background-image: url("../images/video-button/icon-speaker.svg");
+}
+
+.icon-btn-video.icon-speaker-active, .icon-btn-video.icon-speaker:active, .active .icon-btn-video.icon-speaker {
+    background-image: url("../images/video-button/icon-speaker-active.svg");
+}
+
+.icon-btn-video.icon-video {
+    background-image: url("../images/video-button/icon-video.svg");
+}
+
+.icon-btn-video.icon-video-active, .icon-btn-video.icon-video:active, .active .icon-btn-video.icon-video {
+    background-image: url("../images/video-button/icon-video-active.svg");
+}
+
+/**/
+.icon-head-back {
+    background: url("../images/icon-head-back.svg") no-repeat;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: 30% auto !important;
+    background-position: center;
+}
+
+
+/* Chat buttons */
+.icon-chat-add {
+    width: 21px;
+    height: 19px;
+    margin: 0 6px 0 0;
+    float: left;
+    background: url("../images/chat/icon-add.png") no-repeat;
+    background-size: contain !important;
+}
+
+#chat-user-header .icon-status {
+    background-size: contain !important;
+    width: 14px;
+    height: 14px;
+}
+
+#chat-user-header .icon-status.green {
+    background: url("../images/states/icon-available.svg");
+}
+#chat-user-header .icon-status.yellow {
+    background: url("../images/states/inMeeting.svg");
+}
+
+#chat-user-header .icon-status.orange {
+    background: url("../images/states/inMeeting.svg");
+}
+
+#chat-user-header .icon-status.red {
+    background: url("../images/states/icon-busy.svg");
+}
+
+#chat-user-header .icon-status.purple {
+    background: url("../images/states/dnd.svg");
+}
+
+#chat-user-header .icon-status.gray {
+    background: url("../images/states/icon-uknown.svg");
+}
+#chat-user-header .icon-status.blue {
+    background: url("../images/states/icon-logoff.svg");
+}
+
+
+
+#chat-user-header .icon-chat, #chat-add-message button {
+    background: url("../images/chat/icon-chat-send.svg");
+    display: block;
+    width: 33px;
+    height: 33px;
+    background-size: contain !important;
+}
+
+#chat-user-header .icon-chat.icon-search.disabled {
+    background: url("../images/chat/icon-chat-search-disable.svg");
+}
+
+#chat-user-header .icon-chat.icon-search {
+    background: url("../images/chat/icon-chat-search.svg");
+}
+
+.icon-chat.icon-search:active {
+    background: url("../images/chat/icon-chat-search-active.svg");
+}
+
+#chat-user-header .icon-chat.icon-edit.disabled {
+    background: url("../images/chat/icon-chat-edit-disable.svg");
+}
+
+#chat-user-header .icon-chat.icon-edit {
+    background: url("../images/chat/icon-chat-edit.svg");
+}
+
+.icon-chat.icon-edit:active {
+    background: url("../images/chat/icon-chat-edit-active.svg");
+}
+
+#chat-user-header .icon-chat.icon-send.disabled {
+    background: url("../images/chat/icon-chat-send-disable.svg");
+}
+
+#chat-user-header .icon-chat.icon-send {
+    background: url("../images/chat/icon-chat-send.svg");
+}
+
+.icon-chat.icon-send:active {
+    background: url("../images/chat/icon-chat-send-active.svg");
+}
+
+.chat-message-check {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url("../images/chat/icon-chat-chek.svg");
+    outline: none;
+    background-size: contain !important;
+}
+
+.chat-message-check.check {
+    background: url("../images/chat/icon-chat-chek-cheked.svg");
+}
+
+/**/
+#chat-user-header .icon-chat.icon-remove {
+    background: url("../images/chat/icon-chat-delete.svg");
+}
+
+#chat-user-header .icon-chat.icon-remove:active, #chat-user-header .icon-chat.icon-remove:focus {
+    background: url("../images/chat/icon-chat-delete-active.svg");
+}
+
+#chat-user-header .icon-chat.icon-check {
+    background: url("../images/chat/icon-chat-select-all.svg");
+}
+
+#chat-user-header .icon-chat.icon-check:active, #chat-user-header .icon-chat.icon-check:focus {
+    background: url("../images/chat/icon-chat-select-all-active.svg");
+}
+
+#chat-user-header .icon-chat.icon-check.check-all {
+    background: url("../images/chat/icon-chat-deselect-all.svg");
+}
+
+#chat-user-header .icon-chat.icon-check.check-all:active, #chat-user-header .icon-chat.icon-check.check-all:focus {
+    background: url("../images/chat/icon-chat-deselect-all-active.svg");
+}

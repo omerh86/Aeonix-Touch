@@ -1,0 +1,24 @@
+<div ng-controller="settingsController" layout="column" class="inset">
+
+    <md-content md-theme="altTheme">
+        <section>
+            <md-subheader class="md-primary">{{'messages.language'|i18n}}</md-subheader>
+            <select ng-model="locale" ng-options="locale.languageName for locale in locales" ng-change="onLanguageChanged()">
+            </select>
+        </section>
+        <section>
+            <md-subheader class="md-primary">Ring/Play sound on</md-subheader>
+            <md-checkbox ng-model="settings.notifications.ringOnIncomingCall">Incoming call</md-checkbox>
+            <md-checkbox ng-model="settings.notifications.playSoundOnNewMessage">New text message</md-checkbox>
+            <md-checkbox ng-model="settings.notifications.playSoundOnVoiceMail">New voice mail</md-checkbox>
+        </section>
+        <section>
+             <md-subheader class="md-primary">Vibrate on</md-subheader>
+            <md-checkbox ng-model="settings.notifications.vibrateOnIncomingCall">Incoming call</md-checkbox>
+            <md-checkbox ng-model="settings.notifications.vibrateOnNewMessage">New text message</md-checkbox>
+            <md-checkbox ng-model="settings.notifications.vibrateOnVoiceMail">New voice mail</md-checkbox>
+        </section>
+    </md-content>
+</div>
+
+
